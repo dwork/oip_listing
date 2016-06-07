@@ -88,14 +88,6 @@ function oip_listing_flag_default_flags() {
  */
 function oip_listing_node_info() {
   $items = array(
-    'company' => array(
-      'name' => t('Company'),
-      'base' => 'node_content',
-      'description' => t('Company (Real Estate Agency) Directory'),
-      'has_title' => '1',
-      'title_label' => t('Agency Name'),
-      'help' => '',
-    ),
     'documentation' => array(
       'name' => t('Documentation'),
       'base' => 'node_content',
