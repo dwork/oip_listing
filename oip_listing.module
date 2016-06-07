@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OIP Listing feature.
+ */
+
+include_once 'oip_listing.features.inc';
