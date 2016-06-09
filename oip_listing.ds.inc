@@ -388,11 +388,12 @@ function oip_listing_ds_custom_fields_info() {
       'value' => '<div class="flyer_region_border">
 <?php
 // Get the primary agent entity
-$agentid = field_fetch_field_values(\'node\',$entity,\'field_listingagentid\'); 
+$wrapper=entity_metadata_wrapper(\'node\',$entity);
+$agentid =$wrapper->field_listingagentid->value(); 
 $agent1 = get_agent($agentid);
 
 // Which format? Team or individual
-$coagent = field_fetch_field_values(\'node\',$entity,\'field_colistingagentid\'); 
+$coagent = $wrapper->field_colistingagentid->value(); 
 $bothagents = (!empty($coagent[0]) ? 1 : 0);
 if ($bothagents) {
   $agent2 = get_agent($coagent);
@@ -420,12 +421,14 @@ function show_one ($agent1) {
 }
 
 function show_both ($agent1, $agent2) {
-  $ary = field_fetch_field_values(\'user\',$agent1,\'field_firstname\'); $first1 = $ary[0];
+  $uwrapper1 = entity_metadata_wrapper(\'user\',$agent1);
+  $first1 = $uwrapper1->field_firstname->value();
   $pic1 = \'/sites/default/files/pictures/\' . $agent1->picture->filename;
-  $ary = field_fetch_field_values(\'user\',$agent2,\'field_firstname\'); $first2 = $ary[0];
+  $uwrapper2 = entity_metadata_wrapper(\'user\',$agent2);
+  $first2 = $uwrapper2->field_firstname->value();
   $pic2 = \'/sites/default/files/pictures/\' . $agent2->picture->filename;
   print "<div class=classic-agents-left><img src=\'$pic1\'></div>";
-  print "<div class=classic-agents-middle>Agent contact info goes here</div>";
+  print "<div class=classic-agents-middle>$first1 .. Agent contact info goes here .. $first2</div>";
   print "<div class=classic-agents-right><img src=\'$pic2\'></div>";
 }
 
@@ -438,27 +441,23 @@ function get_agent($agentid) {
     $uid = current(array_keys($result[\'user\']));
     $agent1 = user_load($uid);
   }
+  $uwrapper = entity_metadata_wrapper(\'user\',$agent1);
+
   // Set up the fields we use 
-  if (isset($agent1->field_email[\'und\'][0][\'email\']) ) {
-     $agent1->myemail = $agent1->field_email[\'und\'][0][\'email\'];
-  } else {
+  $agent1->myemail = $uwrapper->field_email->value();
+  if (empty($agent1->myemail)) {
      $agent1->myemail = $agent1->mail;
   } 
-  $ary = field_fetch_field_values(\'user\',$agent1,\'field_firstname\'); $agent1->first = $ary[0];
-  if (isset($agent1->field_middlename[\'und\'][0][\'value\'])) {
-    $ary = field_fetch_field_values(\'user\',$agent1,\'field_middlename\');
-    $agent1->middle = $ary[0]; 
-  } else { 
-    $agent1->middle = \'\'; 
-  }
-  $ary = field_fetch_field_values(\'user\',$agent1,\'field_lastname\'); $agent1->last = $ary[0];
-  $ary = field_fetch_field_values(\'user\',$agent1,\'field_title\');  if (isset($ary[0])) {  $agent1->title = $ary[0];  } else {  $agent1->title = \'\';  }
+  $agent1->first = $uwrapper->field_firstname->value();
+  $agent1->middle = $uwrapper->field_middlename->value();
+  $agent1->last = $uwrapper->field_lastname->value();
+  $agent1->title = $uwrapper->field_title->value();
   $agent1->fullname = $agent1->first.\' \'.$agent1->last.\', \'.$agent1->title;
   // Phone numbers
-  if (isset($agent1->field_phone[\'und\'][0][\'number\'])) {  
-     $agent1->phone = \'Direct: \' . formatPhone($agent1->field_phone[\'und\'][0][\'number\']);
+  if (isset($agent1->field_phone[\'und\'][0][\'number\'])) {
+     $agent1->cell = \'Direct: \' . formatPhone($agent1->field_phone[\'und\'][0][\'number\']);
   } else {
-     $agent1->phone = \'\';
+     $agent1->cell = \'\';
   }
   if (isset($agent1->field_fax[\'und\'])) {
     $agent1->fax = \'Fax: \' . formatPhone($agent1->field_fax[\'und\'][0][\'number\']);
