@@ -628,11 +628,10 @@ echo $result->rowCount();
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Field: Content: Address 1 */
+  /* Field: Content: Street Address */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
-  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   /* Field: Content: List Price */
   $handler->display->display_options['fields']['field_listprice']['id'] = 'field_listprice';
   $handler->display->display_options['fields']['field_listprice']['table'] = 'field_data_field_listprice';
@@ -753,15 +752,14 @@ return TRUE;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
 
 $node = node_load($data->nid);
-$listprice = field_fetch_field_values(\'node\', $node, \'field_listprice\');
-print "<a href=/$row->title>$row->title</a> &nbsp; $ ".number_format($listprice[0])."<BR>";
+$wrapper=entity_metadata_wrapper(\'node\',$node);
+$listprice = $wrapper->field_listprice->value();
+print "<a href=/$row->title>$row->title</a> &nbsp; $ ".number_format($listprice)."<BR>";
 
- $ad_title = field_fetch_field_values(\'node\', $node, \'field_adtitle\');
- $adtitle = $ad_title[0];
+ $adtitle = $wrapper->field_adtitle->value();
  if (strlen($adtitle) == 0) {
-   $ad_title = field_fetch_field_values(\'node\', $node, \'field_originaltitle\');
-   $adtitle = $ad_title[0];
- }
+   $adtitle = $wrapper->field_originaltitle->value();
+  }
  print $adtitle."<BR><BR>";
  
  $ad = \'\';
@@ -769,8 +767,7 @@ print "<a href=/$row->title>$row->title</a> &nbsp; $ ".number_format($listprice[
    $ad = $node->body[\'und\'][0][\'safe_value\'];   // use the override or the original
  }
  if (strlen(trim($ad)) == 0) {
-     $ad_body = field_fetch_field_values(\'node\', $node, \'field_originaldescription\');
-     $ad = $ad_body[0];
+     $ad = $wrapper->field_originaldescription->value();
  } 
  $text = substr($ad, 0, strrpos(substr($ad, 0, 200), \' \'));
  print $text . "<a href=$row->title>...More...</a><BR>";
@@ -791,7 +788,7 @@ print "<a href=/$row->title>$row->title</a> &nbsp; $ ".number_format($listprice[
 $ch = curl_init();
  $timeout = 0; // set to zero for no timeout
 // curl_setopt ($ch, CURLOPT_URL, "http://www.oiprets.com/htbin/bsfphoto.cgi?debug=0&id=$row->title&w=140");
- curl_setopt ($ch, CURLOPT_URL, "http://www.oiprets.com/rets_idx/idxphotos.php?debug=0&id=$row->title&w=140");
+ curl_setopt ($ch, CURLOPT_URL, "http://www.oiprets.com/rets_bsf/bsfphotos.php?debug=0&id=$row->title&w=140");
  curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
  curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
  $file_contents = curl_exec($ch);
@@ -1017,11 +1014,10 @@ print "<a href=/$row->title border=0>$file_contents</a>";
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'MLS#';
-  /* Field: Content: Address 1 */
+  /* Field: Content: Street Address */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
-  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   $handler->display->display_options['fields']['field_address']['exclude'] = TRUE;
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
@@ -1445,6 +1441,529 @@ List Price: [field_listprice] ';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $export['listing_map'] = $view;
+
+  $view = new view();
+  $view->name = 'listing_stati';
+  $view->description = 'Display listing list for each property type (1=Commercial, 2=Comm Lease, 3=Land, 4=MultiFam, 5=Rental, 6=Residential)';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Listing Statistics';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Listing Statistics';
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '3';
+  $handler->display->display_options['pager']['options']['quantity'] = '5';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Listings per page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options'] = '10, 50, 100';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = TRUE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'php' => 'php',
+    'php_1' => 'php_1',
+    'php_2' => 'php_2',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'php' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'php_1' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'php_2' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Header: Global: PHP */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+   global $user, $stats, $months;
+   $stats = array();
+   $months = array (
+       1 => date(\'Ym\'),
+       2 => date(\'Ym\',strtotime("-1 month")),
+       3 => date(\'Ym\',strtotime("-2 months")),
+       4 => date(\'Ym\',strtotime("-3 months")),
+       5 => date(\'Ym\',strtotime("-4 months")),
+       6 => date(\'Ym\',strtotime("-5 months")),
+   );
+?>';
+  /* Field: Listing# (Title -- hidden) */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['ui_name'] = 'Listing# (Title -- hidden)';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Flyer Picture (from OIPRETS) */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['ui_name'] = 'Flyer Picture (from OIPRETS)';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+// Pulls listing picture from OIPRETS
+$ch = curl_init();
+ $timeout = 0; // set to zero for no timeout
+ curl_setopt ($ch, CURLOPT_URL, "http://www.oiprets.com/htbin/bsfphoto.cgi?debug=0&id=$row->title&w=140");
+ curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+ curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+ $file_contents = curl_exec($ch);
+ curl_close($ch);
+print "<a href=/$row->title border=0>$file_contents</a>";
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: Address and link */
+  $handler->display->display_options['fields']['php_1']['id'] = 'php_1';
+  $handler->display->display_options['fields']['php_1']['table'] = 'views';
+  $handler->display->display_options['fields']['php_1']['field'] = 'php';
+  $handler->display->display_options['fields']['php_1']['ui_name'] = 'Address and link';
+  $handler->display->display_options['fields']['php_1']['label'] = '';
+  $handler->display->display_options['fields']['php_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
+  $node=node_load($data->nid);
+  print "<a href=/$node->title>$node->title</a><BR>";
+  $ad_title = field_fetch_field_values(\'node\', $node, \'field_adtitle\');    // use the override or the original
+  if (strlen($ad_title[0]) == 0) {
+     $ad_title = field_fetch_field_values(\'node\', $node, \'field_originaladtitle\');
+  }
+  $adtitle = $ad_title[0];
+  $address = field_fetch_field_values(\'node\', $node, \'field_address\');
+  $city = field_fetch_field_values(\'node\', $node, \'field_city\');
+  $state = field_fetch_field_values(\'node\', $node, \'field_state\');
+  $zip = field_fetch_field_values(\'node\', $node, \'field_zipcode\');
+  print "<strong>$adtitle</strong><BR>$address[0]<BR>$city[0], $state[0]  $zip[0]";
+?>';
+  $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
+  /* Field: This Month */
+  $handler->display->display_options['fields']['php_2']['id'] = 'php_2';
+  $handler->display->display_options['fields']['php_2']['table'] = 'views';
+  $handler->display->display_options['fields']['php_2']['field'] = 'php';
+  $handler->display->display_options['fields']['php_2']['ui_name'] = 'This Month';
+  $handler->display->display_options['fields']['php_2']['label'] = 'This Month';
+  $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
+    global $total;
+   $date = date(\'Ym\');
+    // oip_get_stats is in oip_tweaks.module
+    $count = oip_get_stats($row->title,$date);
+    print $count;
+    $total = $count;
+?>';
+  $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_3']['id'] = 'php_3';
+  $handler->display->display_options['fields']['php_3']['table'] = 'views';
+  $handler->display->display_options['fields']['php_3']['field'] = 'php';
+  $handler->display->display_options['fields']['php_3']['label'] = 'Previous Month';
+  $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
+    global $total;
+   $date = date(\'Ym\',strtotime("-1 month"));
+    // oip_get_stats is in oip_tweaks.module
+    $count = oip_get_stats($row->title,$date);
+    print $count;
+    $total = $total + $count;
+?>';
+  $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_4']['id'] = 'php_4';
+  $handler->display->display_options['fields']['php_4']['table'] = 'views';
+  $handler->display->display_options['fields']['php_4']['field'] = 'php';
+  $handler->display->display_options['fields']['php_4']['label'] = '-2 months';
+  $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
+    global $total;
+   $date = date(\'Ym\',strtotime("-2 months"));
+    // oip_get_stats is in oip_tweaks.module
+    $count = oip_get_stats($row->title,$date);
+    print $count;
+    $total = $total + $count;
+?>';
+  $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_5']['id'] = 'php_5';
+  $handler->display->display_options['fields']['php_5']['table'] = 'views';
+  $handler->display->display_options['fields']['php_5']['field'] = 'php';
+  $handler->display->display_options['fields']['php_5']['label'] = '-3 months';
+  $handler->display->display_options['fields']['php_5']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_5']['php_output'] = '<?php
+    global $total;
+   $date = date(\'Ym\',strtotime("-3 months"));
+    // oip_get_stats is in oip_tweaks.module
+    $count = oip_get_stats($row->title,$date);
+    print $count;
+    $total = $total + $count;
+?>';
+  $handler->display->display_options['fields']['php_5']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_5']['php_click_sortable'] = '';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_6']['id'] = 'php_6';
+  $handler->display->display_options['fields']['php_6']['table'] = 'views';
+  $handler->display->display_options['fields']['php_6']['field'] = 'php';
+  $handler->display->display_options['fields']['php_6']['label'] = '-4 months';
+  $handler->display->display_options['fields']['php_6']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_6']['php_output'] = '<?php
+    global $total;
+   $date = date(\'Ym\',strtotime("-4 months"));
+    // oip_get_stats is in oip_tweaks.module
+    $count = oip_get_stats($row->title,$date);
+    print $count;
+    $total = $total + $count;
+?>';
+  $handler->display->display_options['fields']['php_6']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_6']['php_click_sortable'] = '';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_7']['id'] = 'php_7';
+  $handler->display->display_options['fields']['php_7']['table'] = 'views';
+  $handler->display->display_options['fields']['php_7']['field'] = 'php';
+  $handler->display->display_options['fields']['php_7']['label'] = '-5 months';
+  $handler->display->display_options['fields']['php_7']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_7']['php_output'] = '<?php
+    global $total;
+   $date = date(\'Ym\',strtotime("-5 months"));
+    // oip_get_stats is in oip_tweaks.module
+    $count = oip_get_stats($row->title,$date);
+    print $count;
+    $total = $total + $count;
+?>';
+  $handler->display->display_options['fields']['php_7']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_7']['php_click_sortable'] = '';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_8']['id'] = 'php_8';
+  $handler->display->display_options['fields']['php_8']['table'] = 'views';
+  $handler->display->display_options['fields']['php_8']['field'] = 'php';
+  $handler->display->display_options['fields']['php_8']['label'] = 'Total';
+  $handler->display->display_options['fields']['php_8']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_8']['php_output'] = '<?php
+    global $total;
+    print $total;
+?>';
+  $handler->display->display_options['fields']['php_8']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_8']['php_click_sortable'] = '';
+  /* Sort criterion: Content: List Price (field_listprice) */
+  $handler->display->display_options['sorts']['field_listprice_value']['id'] = 'field_listprice_value';
+  $handler->display->display_options['sorts']['field_listprice_value']['table'] = 'field_data_field_listprice';
+  $handler->display->display_options['sorts']['field_listprice_value']['field'] = 'field_listprice_value';
+  $handler->display->display_options['sorts']['field_listprice_value']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_listprice_value']['expose']['label'] = 'List Price';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['created']['expose']['label'] = 'Post date';
+  $handler->display->display_options['sorts']['created']['granularity'] = 'hour';
+  /* Contextual filter: Content: Listing Agent ID (field_listingagentid) */
+  $handler->display->display_options['arguments']['field_listingagentid_value']['id'] = 'field_listingagentid_value';
+  $handler->display->display_options['arguments']['field_listingagentid_value']['table'] = 'field_data_field_listingagentid';
+  $handler->display->display_options['arguments']['field_listingagentid_value']['field'] = 'field_listingagentid_value';
+  $handler->display->display_options['arguments']['field_listingagentid_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_listingagentid_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_listingagentid_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_listingagentid_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_listingagentid_value']['limit'] = '0';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'listing' => 'listing',
+  );
+  /* Filter criterion: Content: Status (field_status) */
+  $handler->display->display_options['filters']['field_status_value']['id'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['table'] = 'field_data_field_status';
+  $handler->display->display_options['filters']['field_status_value']['field'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['value'] = array(
+    'SOLD' => 'SOLD',
+  );
+  /* Filter criterion: Content: List Price (field_listprice) */
+  $handler->display->display_options['filters']['field_listprice_value']['id'] = 'field_listprice_value';
+  $handler->display->display_options['filters']['field_listprice_value']['table'] = 'field_data_field_listprice';
+  $handler->display->display_options['filters']['field_listprice_value']['field'] = 'field_listprice_value';
+  $handler->display->display_options['filters']['field_listprice_value']['operator'] = 'between';
+  $handler->display->display_options['filters']['field_listprice_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_listprice_value']['expose']['operator_id'] = 'field_listprice_value_op';
+  $handler->display->display_options['filters']['field_listprice_value']['expose']['label'] = 'List Price (field_listprice)';
+  $handler->display->display_options['filters']['field_listprice_value']['expose']['operator'] = 'field_listprice_value_op';
+  $handler->display->display_options['filters']['field_listprice_value']['expose']['identifier'] = 'field_listprice_value';
+  $handler->display->display_options['filters']['field_listprice_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    3 => 0,
+    1 => 0,
+    4 => 0,
+    9 => 0,
+    5 => 0,
+    6 => 0,
+    11 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  /* Filter criterion: Content: Property Category (field_proptype) */
+  $handler->display->display_options['filters']['field_proptype_tid']['id'] = 'field_proptype_tid';
+  $handler->display->display_options['filters']['field_proptype_tid']['table'] = 'field_data_field_proptype';
+  $handler->display->display_options['filters']['field_proptype_tid']['field'] = 'field_proptype_tid';
+  $handler->display->display_options['filters']['field_proptype_tid']['value'] = array(
+    1 => '1',
+    3 => '3',
+    4 => '4',
+    6 => '6',
+  );
+  $handler->display->display_options['filters']['field_proptype_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_proptype_tid']['expose']['operator_id'] = 'field_proptype_tid_op';
+  $handler->display->display_options['filters']['field_proptype_tid']['expose']['label'] = 'Property Category (field_proptype)';
+  $handler->display->display_options['filters']['field_proptype_tid']['expose']['operator'] = 'field_proptype_tid_op';
+  $handler->display->display_options['filters']['field_proptype_tid']['expose']['identifier'] = 'field_proptype_tid';
+  $handler->display->display_options['filters']['field_proptype_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_proptype_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    3 => 0,
+    1 => 0,
+    4 => 0,
+    9 => 0,
+    5 => 0,
+    6 => 0,
+    11 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['field_proptype_tid']['expose']['reduce'] = TRUE;
+  $handler->display->display_options['filters']['field_proptype_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_proptype_tid']['vocabulary'] = 'property_type';
+  $handler->display->display_options['filters']['field_proptype_tid']['hierarchy'] = 1;
+  /* Filter criterion: Content: SqFt (field_sqft) */
+  $handler->display->display_options['filters']['field_sqft_value']['id'] = 'field_sqft_value';
+  $handler->display->display_options['filters']['field_sqft_value']['table'] = 'field_data_field_sqft';
+  $handler->display->display_options['filters']['field_sqft_value']['field'] = 'field_sqft_value';
+  $handler->display->display_options['filters']['field_sqft_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_sqft_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_sqft_value']['expose']['operator_id'] = 'field_sqft_value_op';
+  $handler->display->display_options['filters']['field_sqft_value']['expose']['label'] = 'SqFt';
+  $handler->display->display_options['filters']['field_sqft_value']['expose']['operator'] = 'field_sqft_value_op';
+  $handler->display->display_options['filters']['field_sqft_value']['expose']['identifier'] = 'field_sqft_value';
+  $handler->display->display_options['filters']['field_sqft_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    3 => 0,
+    1 => 0,
+    4 => 0,
+    9 => 0,
+    5 => 0,
+    6 => 0,
+    11 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  /* Filter criterion: Content: Beds (field_beds) */
+  $handler->display->display_options['filters']['field_beds_value']['id'] = 'field_beds_value';
+  $handler->display->display_options['filters']['field_beds_value']['table'] = 'field_data_field_beds';
+  $handler->display->display_options['filters']['field_beds_value']['field'] = 'field_beds_value';
+  $handler->display->display_options['filters']['field_beds_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_beds_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_beds_value']['expose']['operator_id'] = 'field_beds_value_op';
+  $handler->display->display_options['filters']['field_beds_value']['expose']['label'] = 'Beds';
+  $handler->display->display_options['filters']['field_beds_value']['expose']['operator'] = 'field_beds_value_op';
+  $handler->display->display_options['filters']['field_beds_value']['expose']['identifier'] = 'field_beds_value';
+  $handler->display->display_options['filters']['field_beds_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    3 => 0,
+    1 => 0,
+    4 => 0,
+    9 => 0,
+    5 => 0,
+    6 => 0,
+    11 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  /* Filter criterion: Content: Baths (field_baths) */
+  $handler->display->display_options['filters']['field_baths_value']['id'] = 'field_baths_value';
+  $handler->display->display_options['filters']['field_baths_value']['table'] = 'field_data_field_baths';
+  $handler->display->display_options['filters']['field_baths_value']['field'] = 'field_baths_value';
+  $handler->display->display_options['filters']['field_baths_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_baths_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_baths_value']['expose']['operator_id'] = 'field_baths_value_op';
+  $handler->display->display_options['filters']['field_baths_value']['expose']['label'] = 'Baths';
+  $handler->display->display_options['filters']['field_baths_value']['expose']['operator'] = 'field_baths_value_op';
+  $handler->display->display_options['filters']['field_baths_value']['expose']['identifier'] = 'field_baths_value';
+  $handler->display->display_options['filters']['field_baths_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    3 => 0,
+    1 => 0,
+    4 => 0,
+    9 => 0,
+    5 => 0,
+    6 => 0,
+    11 => 0,
+    7 => 0,
+    8 => 0,
+  );
+
+  /* Display: Listing Statistics */
+  $handler = $view->new_display('page', 'Listing Statistics', 'page_1');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'listing' => 'listing',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Status (field_status) */
+  $handler->display->display_options['filters']['field_status_value']['id'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['table'] = 'field_data_field_status';
+  $handler->display->display_options['filters']['field_status_value']['field'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['value'] = array(
+    'Active' => 'Active',
+    'Pending' => 'Pending',
+    'Bumpable Buyer' => 'Bumpable Buyer',
+  );
+  $handler->display->display_options['filters']['field_status_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_status_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_status_value']['expose']['operator_id'] = 'field_status_value_op';
+  $handler->display->display_options['filters']['field_status_value']['expose']['label'] = 'Status';
+  $handler->display->display_options['filters']['field_status_value']['expose']['operator'] = 'field_status_value_op';
+  $handler->display->display_options['filters']['field_status_value']['expose']['identifier'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_status_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    3 => 0,
+    1 => 0,
+    4 => 0,
+    9 => 0,
+    5 => 0,
+    6 => 0,
+    11 => 0,
+    7 => 0,
+    8 => 0,
+    12 => 0,
+  );
+  /* Filter criterion: Content: Property Category (field_proptype) */
+  $handler->display->display_options['filters']['field_proptype_tid']['id'] = 'field_proptype_tid';
+  $handler->display->display_options['filters']['field_proptype_tid']['table'] = 'field_data_field_proptype';
+  $handler->display->display_options['filters']['field_proptype_tid']['field'] = 'field_proptype_tid';
+  $handler->display->display_options['filters']['field_proptype_tid']['value'] = array(
+    1 => '1',
+    3 => '3',
+    4 => '4',
+    6 => '6',
+  );
+  $handler->display->display_options['filters']['field_proptype_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_proptype_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_proptype_tid']['expose']['operator_id'] = 'field_proptype_tid_op';
+  $handler->display->display_options['filters']['field_proptype_tid']['expose']['label'] = 'Category';
+  $handler->display->display_options['filters']['field_proptype_tid']['expose']['operator'] = 'field_proptype_tid_op';
+  $handler->display->display_options['filters']['field_proptype_tid']['expose']['identifier'] = 'field_proptype_tid';
+  $handler->display->display_options['filters']['field_proptype_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_proptype_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    3 => 0,
+    1 => 0,
+    4 => 0,
+    9 => 0,
+    5 => 0,
+    6 => 0,
+    11 => 0,
+    7 => 0,
+    8 => 0,
+    12 => 0,
+  );
+  $handler->display->display_options['filters']['field_proptype_tid']['expose']['reduce'] = TRUE;
+  $handler->display->display_options['filters']['field_proptype_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_proptype_tid']['vocabulary'] = 'property_type';
+  $handler->display->display_options['filters']['field_proptype_tid']['hierarchy'] = 1;
+  $handler->display->display_options['path'] = 'mystats/%';
+  $export['listing_stati'] = $view;
+
+  $view = new view();
+  $view->name = 'listing_statistics';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'accesslog';
+  $view->human_name = 'Listing statistics';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Listing statistics';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['style_plugin'] = 'table';
+  /* Field: Access log: Aid */
+  $handler->display->display_options['fields']['aid']['id'] = 'aid';
+  $handler->display->display_options['fields']['aid']['table'] = 'accesslog';
+  $handler->display->display_options['fields']['aid']['field'] = 'aid';
+  /* Field: Access log: Page title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'accesslog';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'listing-statistics';
+  $export['listing_statistics'] = $view;
 
   $view = new view();
   $view->name = 'listings';
@@ -2755,11 +3274,10 @@ print "<a href=/$row->title border=0>$file_contents</a>";
   $handler->display->display_options['fields']['field_mlsno']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_mlsno']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_mlsno']['alter']['path'] = '[field_mlsno]';
-  /* Field: Content: Address 1 */
+  /* Field: Content: Street Address */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
-  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   $handler->display->display_options['fields']['field_address']['exclude'] = TRUE;
   /* Field: Content: City */
   $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
@@ -2962,7 +3480,7 @@ print "<a href=/$row->title border=0>$file_contents</a>";
     7 => 0,
     8 => 0,
   );
-  /* Filter criterion: Content: Address 1 (field_address) */
+  /* Filter criterion: Content: Street Address (field_address) */
   $handler->display->display_options['filters']['field_address_value']['id'] = 'field_address_value';
   $handler->display->display_options['filters']['field_address_value']['table'] = 'field_data_field_address';
   $handler->display->display_options['filters']['field_address_value']['field'] = 'field_address_value';
@@ -3073,11 +3591,10 @@ print "<a href=/$row->title border=0>$file_contents</a>";
   $handler->display->display_options['fields']['field_mlsno']['field'] = 'field_mlsno';
   $handler->display->display_options['fields']['field_mlsno']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_mlsno']['alter']['path'] = '[field_mlsno]';
-  /* Field: Content: Address 1 */
+  /* Field: Content: Street Address */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
-  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   /* Field: Content: City */
   $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
   $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';
@@ -3224,7 +3741,7 @@ print "<a href=/$row->title border=0>$file_contents</a>";
     7 => 0,
     8 => 0,
   );
-  /* Filter criterion: Content: Address 1 (field_address) */
+  /* Filter criterion: Content: Street Address (field_address) */
   $handler->display->display_options['filters']['field_address_value']['id'] = 'field_address_value';
   $handler->display->display_options['filters']['field_address_value']['table'] = 'field_data_field_address';
   $handler->display->display_options['filters']['field_address_value']['field'] = 'field_address_value';
@@ -3298,6 +3815,135 @@ print "<a href=/$row->title border=0>$file_contents</a>";
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'listingsqd';
   $export['listings_utility'] = $view;
+
+  $view = new view();
+  $view->name = 'new_on_oip';
+  $view->description = 'Display listings that still need an Ad Title';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'New on OIP';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'New Listings';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'table';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['required'] = TRUE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Ad Title Override */
+  $handler->display->display_options['fields']['field_adtitle']['id'] = 'field_adtitle';
+  $handler->display->display_options['fields']['field_adtitle']['table'] = 'field_data_field_adtitle';
+  $handler->display->display_options['fields']['field_adtitle']['field'] = 'field_adtitle';
+  $handler->display->display_options['fields']['field_adtitle']['label'] = 'Ad Title ';
+  /* Field: Content: Listing Agent ID */
+  $handler->display->display_options['fields']['field_listingagentid']['id'] = 'field_listingagentid';
+  $handler->display->display_options['fields']['field_listingagentid']['table'] = 'field_data_field_listingagentid';
+  $handler->display->display_options['fields']['field_listingagentid']['field'] = 'field_listingagentid';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  /* Field: Content: Status */
+  $handler->display->display_options['fields']['field_status']['id'] = 'field_status';
+  $handler->display->display_options['fields']['field_status']['table'] = 'field_data_field_status';
+  $handler->display->display_options['fields']['field_status']['field'] = 'field_status';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Edit';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'listing' => 'listing',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Status (field_status) */
+  $handler->display->display_options['filters']['field_status_value']['id'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['table'] = 'field_data_field_status';
+  $handler->display->display_options['filters']['field_status_value']['field'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['value'] = array(
+    'Active' => 'Active',
+    'Bumpable Buyer' => 'Bumpable Buyer',
+    'Short Sale Pending' => 'Short Sale Pending',
+    'Pending' => 'Pending',
+  );
+  $handler->display->display_options['filters']['field_status_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_status_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_status_value']['expose']['operator_id'] = 'field_status_value_op';
+  $handler->display->display_options['filters']['field_status_value']['expose']['label'] = 'Status';
+  $handler->display->display_options['filters']['field_status_value']['expose']['operator'] = 'field_status_value_op';
+  $handler->display->display_options['filters']['field_status_value']['expose']['identifier'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_status_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    3 => 0,
+    1 => 0,
+    4 => 0,
+    9 => 0,
+    5 => 0,
+    6 => 0,
+    11 => 0,
+    7 => 0,
+    8 => 0,
+    12 => 0,
+  );
+  /* Filter criterion: Content: Ad Title Override (field_adtitle) */
+  $handler->display->display_options['filters']['field_adtitle_value']['id'] = 'field_adtitle_value';
+  $handler->display->display_options['filters']['field_adtitle_value']['table'] = 'field_data_field_adtitle';
+  $handler->display->display_options['filters']['field_adtitle_value']['field'] = 'field_adtitle_value';
+  $handler->display->display_options['filters']['field_adtitle_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_adtitle_value']['value'] = 'New on OIP';
+  $handler->display->display_options['filters']['field_adtitle_value']['group'] = 2;
+  /* Filter criterion: Content: Ad Title Override (field_adtitle) */
+  $handler->display->display_options['filters']['field_adtitle_value_1']['id'] = 'field_adtitle_value_1';
+  $handler->display->display_options['filters']['field_adtitle_value_1']['table'] = 'field_data_field_adtitle';
+  $handler->display->display_options['filters']['field_adtitle_value_1']['field'] = 'field_adtitle_value';
+  $handler->display->display_options['filters']['field_adtitle_value_1']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_adtitle_value_1']['value'] = 'New Listing';
+  $handler->display->display_options['filters']['field_adtitle_value_1']['group'] = 2;
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'new-listings';
+  $export['new_on_oip'] = $view;
 
   $view = new view();
   $view->name = 'utility_listing_view';
@@ -3477,11 +4123,10 @@ print "<a href=/$row->title border=0>$file_contents</a>";
   $handler->display->display_options['fields']['field_colistingagentid']['id'] = 'field_colistingagentid';
   $handler->display->display_options['fields']['field_colistingagentid']['table'] = 'field_data_field_colistingagentid';
   $handler->display->display_options['fields']['field_colistingagentid']['field'] = 'field_colistingagentid';
-  /* Field: Content: Address 1 */
+  /* Field: Content: Street Address */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
-  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   /* Field: Content: Ad Title Override */
   $handler->display->display_options['fields']['field_adtitle']['id'] = 'field_adtitle';
   $handler->display->display_options['fields']['field_adtitle']['table'] = 'field_data_field_adtitle';
