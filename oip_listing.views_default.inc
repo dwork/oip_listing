@@ -11,6 +11,232 @@ function oip_listing_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'agencies';
+  $view->description = 'Agencies ("companies", admin view only)';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Agencies';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Agencies';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_company_logo' => 'field_company_logo',
+    'title' => 'title',
+    'field_contact' => 'field_contact',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_company_logo' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_contact' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Company Logo */
+  $handler->display->display_options['fields']['field_company_logo']['id'] = 'field_company_logo';
+  $handler->display->display_options['fields']['field_company_logo']['table'] = 'field_data_field_company_logo';
+  $handler->display->display_options['fields']['field_company_logo']['field'] = 'field_company_logo';
+  $handler->display->display_options['fields']['field_company_logo']['label'] = 'Logo';
+  $handler->display->display_options['fields']['field_company_logo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_company_logo']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Contact/Principal Broker */
+  $handler->display->display_options['fields']['field_contact']['id'] = 'field_contact';
+  $handler->display->display_options['fields']['field_contact']['table'] = 'field_data_field_contact';
+  $handler->display->display_options['fields']['field_contact']['field'] = 'field_contact';
+  /* Field: Field: Listing Office ID */
+  $handler->display->display_options['fields']['field_offid']['id'] = 'field_offid';
+  $handler->display->display_options['fields']['field_offid']['table'] = 'field_data_field_offid';
+  $handler->display->display_options['fields']['field_offid']['field'] = 'field_offid';
+  /* Field: Field: MLS Type */
+  $handler->display->display_options['fields']['field_mls_type']['id'] = 'field_mls_type';
+  $handler->display->display_options['fields']['field_mls_type']['table'] = 'field_data_field_mls_type';
+  $handler->display->display_options['fields']['field_mls_type']['field'] = 'field_mls_type';
+  $handler->display->display_options['fields']['field_mls_type']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_mls_type']['delta_offset'] = '0';
+  /* Field: Content: Listing Status */
+  $handler->display->display_options['fields']['field_listingstatus']['id'] = 'field_listingstatus';
+  $handler->display->display_options['fields']['field_listingstatus']['table'] = 'field_data_field_listingstatus';
+  $handler->display->display_options['fields']['field_listingstatus']['field'] = 'field_listingstatus';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '#Agents';
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+  $query = new EntityFieldQuery();
+  $query->entityCondition(\'entity_type\', \'user\')
+  ->propertyCondition(\'status\', 1)
+  ->fieldCondition(\'field_agency\', \'target_id\', $row->field_offid, \'=\')
+  ->count();
+  $result = $query->execute();
+  print $result;
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'company' => 'company',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'agencies';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Agencies';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $export['agencies'] = $view;
+
+  $view = new view();
+  $view->name = 'agency';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'users';
+  $view->human_name = 'Agency';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Agency';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'access user profiles';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'name' => 'name',
+    'field_agency' => 'field_agency',
+    'field_agency_' => 'field_agency_',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_agency' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_agency_' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_agency_target_id']['id'] = 'field_agency_target_id';
+  $handler->display->display_options['relationships']['field_agency_target_id']['table'] = 'field_data_field_agency';
+  $handler->display->display_options['relationships']['field_agency_target_id']['field'] = 'field_agency_target_id';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_agency_target_id';
+  /* Sort criterion: User: Created date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'users';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'agency';
+  $export['agency'] = $view;
+
+  $view = new view();
   $view->name = 'agent_information';
   $view->description = 'Agent information for agent with listing lists';
   $view->tag = 'default';
@@ -371,6 +597,625 @@ return \'5142\';';
   $export['agent_listing_map_'] = $view;
 
   $view = new view();
+  $view->name = 'agents';
+  $view->description = 'Display list of active agents and appropriate contact information';
+  $view->tag = 'default';
+  $view->base_table = 'users';
+  $view->human_name = 'Agents';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Agents';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['style_plugin'] = 'table';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_agency_target_id']['id'] = 'field_agency_target_id';
+  $handler->display->display_options['relationships']['field_agency_target_id']['table'] = 'field_data_field_agency';
+  $handler->display->display_options['relationships']['field_agency_target_id']['field'] = 'field_agency_target_id';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Listing Office ID (hidden) */
+  $handler->display->display_options['fields']['field_offid']['id'] = 'field_offid';
+  $handler->display->display_options['fields']['field_offid']['table'] = 'field_data_field_offid';
+  $handler->display->display_options['fields']['field_offid']['field'] = 'field_offid';
+  $handler->display->display_options['fields']['field_offid']['ui_name'] = 'Listing Office ID (hidden)';
+  $handler->display->display_options['fields']['field_offid']['label'] = '';
+  $handler->display->display_options['fields']['field_offid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_offid']['element_label_colon'] = FALSE;
+  /* Field: Fax (hidden) */
+  $handler->display->display_options['fields']['field_fax']['id'] = 'field_fax';
+  $handler->display->display_options['fields']['field_fax']['table'] = 'field_data_field_fax';
+  $handler->display->display_options['fields']['field_fax']['field'] = 'field_fax';
+  $handler->display->display_options['fields']['field_fax']['ui_name'] = 'Fax (hidden)';
+  $handler->display->display_options['fields']['field_fax']['label'] = '';
+  $handler->display->display_options['fields']['field_fax']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_fax']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_fax']['alter']['text'] = 'Fax: [field_fax]<BR>';
+  $handler->display->display_options['fields']['field_fax']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_fax']['click_sort_column'] = 'number';
+  $handler->display->display_options['fields']['field_fax']['type'] = 'local_phone_number';
+  /* Field: Phone (hidden) */
+  $handler->display->display_options['fields']['field_phone']['id'] = 'field_phone';
+  $handler->display->display_options['fields']['field_phone']['table'] = 'field_data_field_phone';
+  $handler->display->display_options['fields']['field_phone']['field'] = 'field_phone';
+  $handler->display->display_options['fields']['field_phone']['ui_name'] = 'Phone (hidden)';
+  $handler->display->display_options['fields']['field_phone']['label'] = '';
+  $handler->display->display_options['fields']['field_phone']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_phone']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_phone']['alter']['text'] = 'Ph: [field_phone]<BR>';
+  $handler->display->display_options['fields']['field_phone']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_phone']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_phone']['click_sort_column'] = 'number';
+  $handler->display->display_options['fields']['field_phone']['type'] = 'local_phone_number';
+  /* Field: Toll Free (hidden) */
+  $handler->display->display_options['fields']['field_tollfree']['id'] = 'field_tollfree';
+  $handler->display->display_options['fields']['field_tollfree']['table'] = 'field_data_field_tollfree';
+  $handler->display->display_options['fields']['field_tollfree']['field'] = 'field_tollfree';
+  $handler->display->display_options['fields']['field_tollfree']['ui_name'] = 'Toll Free (hidden)';
+  $handler->display->display_options['fields']['field_tollfree']['label'] = '';
+  $handler->display->display_options['fields']['field_tollfree']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_tollfree']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_tollfree']['alter']['text'] = '800: [field_tollfree]<BR>';
+  $handler->display->display_options['fields']['field_tollfree']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_tollfree']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_tollfree']['click_sort_column'] = 'number';
+  $handler->display->display_options['fields']['field_tollfree']['type'] = 'local_phone_number';
+  /* Field: Website (hidden) */
+  $handler->display->display_options['fields']['field_website']['id'] = 'field_website';
+  $handler->display->display_options['fields']['field_website']['table'] = 'field_data_field_website';
+  $handler->display->display_options['fields']['field_website']['field'] = 'field_website';
+  $handler->display->display_options['fields']['field_website']['ui_name'] = 'Website (hidden)';
+  $handler->display->display_options['fields']['field_website']['label'] = '';
+  $handler->display->display_options['fields']['field_website']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_website']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_website']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_website']['type'] = 'link_label';
+  /* Field: First name (hidden) */
+  $handler->display->display_options['fields']['field_firstname']['id'] = 'field_firstname';
+  $handler->display->display_options['fields']['field_firstname']['table'] = 'field_data_field_firstname';
+  $handler->display->display_options['fields']['field_firstname']['field'] = 'field_firstname';
+  $handler->display->display_options['fields']['field_firstname']['ui_name'] = 'First name (hidden)';
+  $handler->display->display_options['fields']['field_firstname']['label'] = '';
+  $handler->display->display_options['fields']['field_firstname']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_firstname']['element_label_colon'] = FALSE;
+  /* Field: Last Name (hidden) */
+  $handler->display->display_options['fields']['field_lastname']['id'] = 'field_lastname';
+  $handler->display->display_options['fields']['field_lastname']['table'] = 'field_data_field_lastname';
+  $handler->display->display_options['fields']['field_lastname']['field'] = 'field_lastname';
+  $handler->display->display_options['fields']['field_lastname']['ui_name'] = 'Last Name (hidden)';
+  $handler->display->display_options['fields']['field_lastname']['label'] = '';
+  $handler->display->display_options['fields']['field_lastname']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_lastname']['element_label_colon'] = FALSE;
+  /* Field: Middle Initiial (hidden) */
+  $handler->display->display_options['fields']['field_middlename']['id'] = 'field_middlename';
+  $handler->display->display_options['fields']['field_middlename']['table'] = 'field_data_field_middlename';
+  $handler->display->display_options['fields']['field_middlename']['field'] = 'field_middlename';
+  $handler->display->display_options['fields']['field_middlename']['ui_name'] = 'Middle Initiial (hidden)';
+  $handler->display->display_options['fields']['field_middlename']['label'] = '';
+  $handler->display->display_options['fields']['field_middlename']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_middlename']['element_label_colon'] = FALSE;
+  /* Field: Agency Name */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_agency_target_id';
+  $handler->display->display_options['fields']['title']['ui_name'] = 'Agency Name';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: User: Picture */
+  $handler->display->display_options['fields']['picture']['id'] = 'picture';
+  $handler->display->display_options['fields']['picture']['table'] = 'users';
+  $handler->display->display_options['fields']['picture']['field'] = 'picture';
+  /* Field: Title (hidden) */
+  $handler->display->display_options['fields']['field_title']['id'] = 'field_title';
+  $handler->display->display_options['fields']['field_title']['table'] = 'field_data_field_title';
+  $handler->display->display_options['fields']['field_title']['field'] = 'field_title';
+  $handler->display->display_options['fields']['field_title']['ui_name'] = 'Title (hidden)';
+  $handler->display->display_options['fields']['field_title']['label'] = '';
+  $handler->display->display_options['fields']['field_title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_title']['element_label_colon'] = FALSE;
+  /* Field: Linked UID (hidden) */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['ui_name'] = 'Linked UID (hidden)';
+  $handler->display->display_options['fields']['uid']['label'] = '';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
+  /* Field: Email (PHP-login or public) (hidden) */
+  $handler->display->display_options['fields']['php_1']['id'] = 'php_1';
+  $handler->display->display_options['fields']['php_1']['table'] = 'views';
+  $handler->display->display_options['fields']['php_1']['field'] = 'php';
+  $handler->display->display_options['fields']['php_1']['ui_name'] = 'Email (PHP-login or public) (hidden)';
+  $handler->display->display_options['fields']['php_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
+  $user=user_load($row->uid);
+  $emailaddr = $user->mail;
+  if (isset($user->field_email[0])) {
+    $email = field_fetch_field_values(\'user\',$row->uid,\'field_email\');
+    $emailaddr = $email[0];
+  }
+  print "<a href=mailto:$emailaddr>$emailaddr</a><BR>";
+?>';
+  $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = 'Agent';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[name]<BR>
+[field_firstname] [field_middlename] [field_lastname]<BR>
+[field_title]<BR>
+[title]';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = 'Contact information';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '[php_1]
+[field_phone]
+[field_fax]
+[field_tollfree]
+[field_website]';
+  /* Field: Links to Listings (PHP) */
+  $handler->display->display_options['fields']['php_2']['id'] = 'php_2';
+  $handler->display->display_options['fields']['php_2']['table'] = 'views';
+  $handler->display->display_options['fields']['php_2']['field'] = 'php';
+  $handler->display->display_options['fields']['php_2']['ui_name'] = 'Links to Listings (PHP)';
+  $handler->display->display_options['fields']['php_2']['label'] = 'Links';
+  $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
+  global $user;
+  $this_user = user_load($row->uid);
+  $ary = field_fetch_field_values(\'user\',$this_user,\'field_agentid\');  $agent_id=$ary[0];
+  $membership = \'Basic\';
+  foreach ($this_user->roles as $key => $value) {
+    switch ($value) {
+      case \'basic membership\':  
+         $membership = \'Basic\';
+         break;
+     case \'gold membership\':
+         $membership = \'Gold\';
+         break;
+     case \'platinum membership\':
+        $membership = \'Platinum\';
+        break;
+     case \'team membership\':
+        $membership = \'Team\';
+        break;
+     }
+  }
+  // Now, display "Listings" for Gold, "Listings, Solds" for Platinum. Display "My Listings" for Gold & Platinum of logged in
+ print "<a href=myactives/$agent_id>For Sale<a/><BR>";
+ switch ($membership) {
+    case \'Gold\':
+       if ($this_user == $row->uid or $user->uid==1) {
+          print "<a href=/mylistings/$agent_id>My Listings<a/><BR>";
+          print "<a href=/mystats/$agent_id>My Stats<a/><BR>";
+       }
+       break;
+    case \'Platinum\':
+        print "<a href=/mysolds/$agent_id>Solds</a><BR>";
+       if ($this_user == $row->uid or $user->uid==1) {
+          print "<a href=/mylistings/$agent_id>My Listings<a/><BR>";
+          print "<a href=/mystats/$agent_id>My Stats<a/><BR>";
+       }
+       break;
+   default:
+       if ($user->uid==1) {
+            print "<a href=/mylistings/$agent_id>(Admin) Listings<a/><BR>";
+            print "<a href=/mystats/$agent_id>(Admin) Stats<a/><BR>";
+       }
+       break;
+  }
+  // print $membership;
+?>';
+  $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
+  /* Field: User: Description */
+  $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
+  $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['exclude'] = TRUE;
+  /* Sort criterion: Global: Random */
+  $handler->display->display_options['sorts']['random']['id'] = 'random';
+  $handler->display->display_options['sorts']['random']['table'] = 'views';
+  $handler->display->display_options['sorts']['random']['field'] = 'random';
+  $handler->display->display_options['sorts']['random']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['random']['expose']['label'] = 'Random';
+  /* Sort criterion: User: Last Name (field_lastname) */
+  $handler->display->display_options['sorts']['field_lastname_value']['id'] = 'field_lastname_value';
+  $handler->display->display_options['sorts']['field_lastname_value']['table'] = 'field_data_field_lastname';
+  $handler->display->display_options['sorts']['field_lastname_value']['field'] = 'field_lastname_value';
+  $handler->display->display_options['sorts']['field_lastname_value']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_lastname_value']['expose']['label'] = 'Last Name';
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: User: Last Name (field_lastname) */
+  $handler->display->display_options['filters']['field_lastname_value']['id'] = 'field_lastname_value';
+  $handler->display->display_options['filters']['field_lastname_value']['table'] = 'field_data_field_lastname';
+  $handler->display->display_options['filters']['field_lastname_value']['field'] = 'field_lastname_value';
+  $handler->display->display_options['filters']['field_lastname_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_lastname_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_lastname_value']['expose']['operator_id'] = 'field_lastname_value_op';
+  $handler->display->display_options['filters']['field_lastname_value']['expose']['label'] = 'Last Name';
+  $handler->display->display_options['filters']['field_lastname_value']['expose']['operator'] = 'field_lastname_value_op';
+  $handler->display->display_options['filters']['field_lastname_value']['expose']['identifier'] = 'field_lastname_value';
+  $handler->display->display_options['filters']['field_lastname_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    3 => 0,
+    1 => 0,
+    4 => 0,
+    9 => 0,
+    5 => 0,
+    6 => 0,
+    11 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  /* Filter criterion: Global: PHP */
+  $handler->display->display_options['filters']['php']['id'] = 'php';
+  $handler->display->display_options['filters']['php']['table'] = 'views';
+  $handler->display->display_options['filters']['php']['field'] = 'php';
+  $handler->display->display_options['filters']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['filters']['php']['php_filter'] = '// Omit admin user
+if ($row->uid == 1) {
+   RETURN TRUE;
+}
+RETURN FALSE;';
+  /* Filter criterion: User: User Type (field_usertype) */
+  $handler->display->display_options['filters']['field_usertype_tid']['id'] = 'field_usertype_tid';
+  $handler->display->display_options['filters']['field_usertype_tid']['table'] = 'field_data_field_usertype';
+  $handler->display->display_options['filters']['field_usertype_tid']['field'] = 'field_usertype_tid';
+  $handler->display->display_options['filters']['field_usertype_tid']['value'] = array(
+    16 => '16',
+  );
+  $handler->display->display_options['filters']['field_usertype_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_usertype_tid']['vocabulary'] = 'company_type';
+  $handler->display->display_options['filters']['field_usertype_tid']['hierarchy'] = 1;
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'agents';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Agents';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $export['agents'] = $view;
+
+  $view = new view();
+  $view->name = 'business_directory';
+  $view->description = 'Business directory (entered through "users")';
+  $view->tag = 'default';
+  $view->base_table = 'users';
+  $view->human_name = 'Business Directory';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Business Directory';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+    ),
+    'field_usertype_tid' => array(
+      'more_options' => array(
+        'is_secondary' => 0,
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+      ),
+    ),
+  );
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_usertype',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['columns'] = array(
+    'uid' => 'uid',
+    'field_usertype' => 'field_usertype',
+    'name' => 'name',
+    'field_fax' => 'field_fax',
+    'field_phone' => 'field_phone',
+    'field_email' => 'field_email',
+    'field_tollfree' => 'field_tollfree',
+    'field_website' => 'field_website',
+    'field_description' => 'field_description',
+    'php' => 'php',
+    'nothing' => 'nothing',
+    'field_description_1' => 'field_description_1',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'uid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_usertype' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_fax' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_phone' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_email' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_tollfree' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_website' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_description' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'php' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_description_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  /* Field: User: Company Name */
+  $handler->display->display_options['fields']['field_company_name']['id'] = 'field_company_name';
+  $handler->display->display_options['fields']['field_company_name']['table'] = 'field_data_field_company_name';
+  $handler->display->display_options['fields']['field_company_name']['field'] = 'field_company_name';
+  $handler->display->display_options['fields']['field_company_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_company_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_company_name']['alter']['text'] = '[field_company_name]';
+  $handler->display->display_options['fields']['field_company_name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_company_name']['alter']['path'] = '/user/[uid]';
+  /* Field: Field: Fax */
+  $handler->display->display_options['fields']['field_fax']['id'] = 'field_fax';
+  $handler->display->display_options['fields']['field_fax']['table'] = 'field_data_field_fax';
+  $handler->display->display_options['fields']['field_fax']['field'] = 'field_fax';
+  $handler->display->display_options['fields']['field_fax']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_fax']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_fax']['alter']['text'] = 'Fax: [field_fax]<BR>';
+  $handler->display->display_options['fields']['field_fax']['click_sort_column'] = 'number';
+  $handler->display->display_options['fields']['field_fax']['type'] = 'local_phone_number';
+  /* Field: Field: Phone */
+  $handler->display->display_options['fields']['field_phone']['id'] = 'field_phone';
+  $handler->display->display_options['fields']['field_phone']['table'] = 'field_data_field_phone';
+  $handler->display->display_options['fields']['field_phone']['field'] = 'field_phone';
+  $handler->display->display_options['fields']['field_phone']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_phone']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_phone']['alter']['text'] = 'Ph: [field_phone]<BR>';
+  $handler->display->display_options['fields']['field_phone']['click_sort_column'] = 'number';
+  $handler->display->display_options['fields']['field_phone']['type'] = 'local_phone_number';
+  /* Field: Field: Toll Free */
+  $handler->display->display_options['fields']['field_tollfree']['id'] = 'field_tollfree';
+  $handler->display->display_options['fields']['field_tollfree']['table'] = 'field_data_field_tollfree';
+  $handler->display->display_options['fields']['field_tollfree']['field'] = 'field_tollfree';
+  $handler->display->display_options['fields']['field_tollfree']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_tollfree']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_tollfree']['alter']['text'] = '800: [field_tollfree]<BR>';
+  $handler->display->display_options['fields']['field_tollfree']['click_sort_column'] = 'number';
+  $handler->display->display_options['fields']['field_tollfree']['type'] = 'local_phone_number';
+  /* Field: Field: Website */
+  $handler->display->display_options['fields']['field_website']['id'] = 'field_website';
+  $handler->display->display_options['fields']['field_website']['table'] = 'field_data_field_website';
+  $handler->display->display_options['fields']['field_website']['field'] = 'field_website';
+  $handler->display->display_options['fields']['field_website']['label'] = 'Company Website';
+  $handler->display->display_options['fields']['field_website']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_website']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_website']['type'] = 'link_label';
+  /* Field: User: Description */
+  $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
+  $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['exclude'] = TRUE;
+  /* Field: Email (login or public) */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['ui_name'] = 'Email (login or public)';
+  $handler->display->display_options['fields']['php']['label'] = 'Email';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+  $user=user_load($row->uid);
+  $emailaddr = $user->mail;
+  if (isset($user->field_email[0])) {
+    $email = field_fetch_field_values(\'user\',$row->uid,\'field_email\');
+    $emailaddr = $email[0];
+  }
+  print "<a href=mailto:$emailaddr>$emailaddr</a><BR>";
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = 'Contact Information';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_company_name]<BR>
+[php] 
+[field_phone]
+[field_fax]
+[field_tollfree]
+[field_website]';
+  /* Field: User: Description */
+  $handler->display->display_options['fields']['field_description_1']['id'] = 'field_description_1';
+  $handler->display->display_options['fields']['field_description_1']['table'] = 'field_data_field_description';
+  $handler->display->display_options['fields']['field_description_1']['field'] = 'field_description';
+  /* Sort criterion: User: Created date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'users';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: User: Roles */
+  $handler->display->display_options['filters']['rid']['id'] = 'rid';
+  $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['filters']['rid']['field'] = 'rid';
+  $handler->display->display_options['filters']['rid']['value'] = array(
+    7 => '7',
+    12 => '12',
+  );
+  $handler->display->display_options['filters']['rid']['group'] = 1;
+  /* Filter criterion: User: User Type (field_usertype) */
+  $handler->display->display_options['filters']['field_usertype_tid']['id'] = 'field_usertype_tid';
+  $handler->display->display_options['filters']['field_usertype_tid']['table'] = 'field_data_field_usertype';
+  $handler->display->display_options['filters']['field_usertype_tid']['field'] = 'field_usertype_tid';
+  $handler->display->display_options['filters']['field_usertype_tid']['value'] = array(
+    84 => '84',
+    17 => '17',
+    19 => '19',
+    18 => '18',
+    16 => '16',
+    20 => '20',
+  );
+  $handler->display->display_options['filters']['field_usertype_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_usertype_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_usertype_tid']['expose']['operator_id'] = 'field_usertype_tid_op';
+  $handler->display->display_options['filters']['field_usertype_tid']['expose']['label'] = 'Category';
+  $handler->display->display_options['filters']['field_usertype_tid']['expose']['operator'] = 'field_usertype_tid_op';
+  $handler->display->display_options['filters']['field_usertype_tid']['expose']['identifier'] = 'field_usertype_tid';
+  $handler->display->display_options['filters']['field_usertype_tid']['expose']['remember'] = TRUE;
+  $handler->display->display_options['filters']['field_usertype_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_usertype_tid']['expose']['remember_roles'] = array(
+    2 => 0,
+    3 => 0,
+    1 => 0,
+    4 => 0,
+    9 => 0,
+    5 => 0,
+    6 => 0,
+    11 => 0,
+    7 => 0,
+    8 => 0,
+    12 => 0,
+  );
+  $handler->display->display_options['filters']['field_usertype_tid']['expose']['reduce'] = TRUE;
+  $handler->display->display_options['filters']['field_usertype_tid']['group_info']['label'] = 'User Type (field_usertype)';
+  $handler->display->display_options['filters']['field_usertype_tid']['group_info']['identifier'] = 'field_usertype_tid';
+  $handler->display->display_options['filters']['field_usertype_tid']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['field_usertype_tid']['group_info']['group_items'] = array(
+    1 => array(),
+    2 => array(),
+    3 => array(),
+  );
+  $handler->display->display_options['filters']['field_usertype_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_usertype_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_usertype_tid']['vocabulary'] = 'company_type';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'business-directory';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Business Directory';
+  $handler->display->display_options['menu']['description'] = 'Business Directory';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $export['business_directory'] = $view;
+
+  $view = new view();
   $view->name = 'documentation';
   $view->description = 'Administrative view of documentation';
   $view->tag = 'default';
@@ -628,10 +1473,11 @@ echo $result->rowCount();
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Field: Content: Street Address */
+  /* Field: Content: Address 1 */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
+  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   /* Field: Content: List Price */
   $handler->display->display_options['fields']['field_listprice']['id'] = 'field_listprice';
   $handler->display->display_options['fields']['field_listprice']['table'] = 'field_data_field_listprice';
@@ -1014,10 +1860,11 @@ print "<a href=/$row->title border=0>$file_contents</a>";
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'MLS#';
-  /* Field: Content: Street Address */
+  /* Field: Content: Address 1 */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
+  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   $handler->display->display_options['fields']['field_address']['exclude'] = TRUE;
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
@@ -3274,10 +4121,11 @@ print "<a href=/$row->title border=0>$file_contents</a>";
   $handler->display->display_options['fields']['field_mlsno']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_mlsno']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_mlsno']['alter']['path'] = '[field_mlsno]';
-  /* Field: Content: Street Address */
+  /* Field: Content: Address 1 */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
+  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   $handler->display->display_options['fields']['field_address']['exclude'] = TRUE;
   /* Field: Content: City */
   $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
@@ -3480,7 +4328,7 @@ print "<a href=/$row->title border=0>$file_contents</a>";
     7 => 0,
     8 => 0,
   );
-  /* Filter criterion: Content: Street Address (field_address) */
+  /* Filter criterion: Content: Address 1 (field_address) */
   $handler->display->display_options['filters']['field_address_value']['id'] = 'field_address_value';
   $handler->display->display_options['filters']['field_address_value']['table'] = 'field_data_field_address';
   $handler->display->display_options['filters']['field_address_value']['field'] = 'field_address_value';
@@ -3591,10 +4439,11 @@ print "<a href=/$row->title border=0>$file_contents</a>";
   $handler->display->display_options['fields']['field_mlsno']['field'] = 'field_mlsno';
   $handler->display->display_options['fields']['field_mlsno']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_mlsno']['alter']['path'] = '[field_mlsno]';
-  /* Field: Content: Street Address */
+  /* Field: Content: Address 1 */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
+  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   /* Field: Content: City */
   $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
   $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';
@@ -3741,7 +4590,7 @@ print "<a href=/$row->title border=0>$file_contents</a>";
     7 => 0,
     8 => 0,
   );
-  /* Filter criterion: Content: Street Address (field_address) */
+  /* Filter criterion: Content: Address 1 (field_address) */
   $handler->display->display_options['filters']['field_address_value']['id'] = 'field_address_value';
   $handler->display->display_options['filters']['field_address_value']['table'] = 'field_data_field_address';
   $handler->display->display_options['filters']['field_address_value']['field'] = 'field_address_value';
@@ -4123,10 +4972,11 @@ print "<a href=/$row->title border=0>$file_contents</a>";
   $handler->display->display_options['fields']['field_colistingagentid']['id'] = 'field_colistingagentid';
   $handler->display->display_options['fields']['field_colistingagentid']['table'] = 'field_data_field_colistingagentid';
   $handler->display->display_options['fields']['field_colistingagentid']['field'] = 'field_colistingagentid';
-  /* Field: Content: Street Address */
+  /* Field: Content: Address 1 */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
+  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   /* Field: Content: Ad Title Override */
   $handler->display->display_options['fields']['field_adtitle']['id'] = 'field_adtitle';
   $handler->display->display_options['fields']['field_adtitle']['table'] = 'field_data_field_adtitle';

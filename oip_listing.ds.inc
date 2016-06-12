@@ -455,9 +455,9 @@ function get_agent($agentid) {
   $agent1->fullname = $agent1->first.\' \'.$agent1->last.\', \'.$agent1->title;
   // Phone numbers
   if (isset($agent1->field_phone[\'und\'][0][\'number\'])) {
-     $agent1->cell = \'Direct: \' . formatPhone($agent1->field_phone[\'und\'][0][\'number\']);
+     $agent1->phone = \'Direct: \' . formatPhone($agent1->field_phone[\'und\'][0][\'number\']);
   } else {
-     $agent1->cell = \'\';
+     $agent1->phone = \'\';
   }
   if (isset($agent1->field_fax[\'und\'])) {
     $agent1->fax = \'Fax: \' . formatPhone($agent1->field_fax[\'und\'][0][\'number\']);
@@ -1118,8 +1118,7 @@ print "<a href=/$entity->title border=0 align=left>$file_contents</a>";
       $default_tid = $classic_tid;
     }
   
-
-    $flyer=$wrapper->field_flyer->value()->field_flyer_label[\'und\'][0][\'safe_value\'];
+  //  $flyer=$wrapper->field_flyer->value()->field_flyer_label[\'und\'][0][\'safe_value\'];
  
    // Basic membership can only use the default (classic) flyer
     foreach ($agent->roles as $role) {
