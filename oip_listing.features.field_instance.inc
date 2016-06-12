@@ -6679,6 +6679,7 @@ function oip_listing_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_yearbuiltmod',
     'label' => 'Year Built (Mod)',
+    'readmore_behaviour' => 'default',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -6688,7 +6689,7 @@ function oip_listing_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 20,
+        'size' => 40,
       ),
       'type' => 'text_textfield',
       'weight' => 20,

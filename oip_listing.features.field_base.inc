@@ -2849,7 +2849,7 @@ function oip_listing_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
-      'max_length' => 20,
+      'max_length' => 40,
       'views_base_table' => 0,
     ),
     'translatable' => 0,
