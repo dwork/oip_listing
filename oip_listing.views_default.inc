@@ -749,10 +749,11 @@ return \'5142\';';
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
   $user=user_load($row->uid);
+  $wrapper=entity_metadata_wrapper(\'user\',$user);
+  $email = $wrapper->field_email->value();
   $emailaddr = $user->mail;
-  if (isset($user->field_email[0])) {
-    $email = field_fetch_field_values(\'user\',$row->uid,\'field_email\');
-    $emailaddr = $email[0];
+  if (!empty($email )) {
+     $emailaddr = $email;
   }
   print "<a href=mailto:$emailaddr>$emailaddr</a><BR>";
 ?>';
@@ -787,7 +788,8 @@ return \'5142\';';
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
   global $user;
   $this_user = user_load($row->uid);
-  $ary = field_fetch_field_values(\'user\',$this_user,\'field_agentid\');  $agent_id=$ary[0];
+  $wrapper=entity_metadata_wrapper(\'user\',$this_user);
+  $agent_id = $wrapper->field_agentid->value();
   $membership = \'Basic\';
   foreach ($this_user->roles as $key => $value) {
     switch ($value) {
@@ -803,6 +805,9 @@ return \'5142\';';
      case \'team membership\':
         $membership = \'Team\';
         break;
+    case \'Agent\':
+        $membership = \'Agent\';
+        break;
      }
   }
   // Now, display "Listings" for Gold, "Listings, Solds" for Platinum. Display "My Listings" for Gold & Platinum of logged in
@@ -815,6 +820,13 @@ return \'5142\';';
        }
        break;
     case \'Platinum\':
+        print "<a href=/mysolds/$agent_id>Solds</a><BR>";
+       if ($this_user == $row->uid or $user->uid==1) {
+          print "<a href=/mylistings/$agent_id>My Listings<a/><BR>";
+          print "<a href=/mystats/$agent_id>My Stats<a/><BR>";
+       }
+       break;
+    case \'Agent\':
         print "<a href=/mysolds/$agent_id>Solds</a><BR>";
        if ($this_user == $row->uid or $user->uid==1) {
           print "<a href=/mylistings/$agent_id>My Listings<a/><BR>";
