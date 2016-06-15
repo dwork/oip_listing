@@ -153,7 +153,7 @@ function oip_listing_ds_field_settings_info() {
       'format' => 'default',
     ),
     'agents_classic' => array(
-      'weight' => '20',
+      'weight' => '22',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -164,6 +164,16 @@ function oip_listing_ds_field_settings_info() {
     ),
     'bedrooms_classic_res_multi_' => array(
       'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'classic_listing_description' => array(
+      'weight' => '21',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'classic_multiple_pics_exist' => array(
+      'weight' => '14',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -187,11 +197,6 @@ function oip_listing_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'listing_description' => array(
-      'weight' => '19',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'listing_id_classic' => array(
       'weight' => '12',
       'label' => 'hidden',
@@ -203,27 +208,27 @@ function oip_listing_ds_field_settings_info() {
       'format' => 'default',
     ),
     'rmls_disclaimer' => array(
-      'weight' => '21',
+      'weight' => '23',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'row1_classic_res_multi_' => array(
-      'weight' => '14',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'row2_classic_com_' => array(
-      'weight' => '16',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'row2_classic_res_mul_com_' => array(
       'weight' => '15',
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'row3_classic_res_mul_' => array(
+    'row2_classic_com_' => array(
       'weight' => '17',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'row2_classic_res_mul_com_' => array(
+      'weight' => '16',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'row3_classic_res_mul_' => array(
+      'weight' => '18',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -243,7 +248,7 @@ function oip_listing_ds_field_settings_info() {
       'format' => 'default',
     ),
     'utilities_classic' => array(
-      'weight' => '18',
+      'weight' => '19',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -347,7 +352,7 @@ function oip_listing_ds_custom_fields_info() {
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'acres_classic';
-  $ds_field->label = 'Acres - classic';
+  $ds_field->label = 'Classic - acres';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -356,12 +361,11 @@ function oip_listing_ds_custom_fields_info() {
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php
-
   $wrapper = entity_metadata_wrapper(\'node\',$entity);
   $acreage = $wrapper->field_acreage->value();
   if (isset($acreage)) {
     if ($acreage <> 0) {
-       print "<div class=classic-left>Acres:</div>";
+       print "<div class=\'classic-left strong\'>Acres:</div>";
        print "<div class=classic-right>$acreage</div>"; 
        print "<div class=clear></div>";
     }
@@ -377,7 +381,7 @@ function oip_listing_ds_custom_fields_info() {
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'agents_classic';
-  $ds_field->label = 'Agents - classic';
+  $ds_field->label = 'Classic - Agents';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -385,10 +389,9 @@ function oip_listing_ds_custom_fields_info() {
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<div class="flyer_region_border">
-<?php
+      'value' => '<?php
 // Get the primary agent entity
-$wrapper=entity_metadata_wrapper(\'node\',$entity);
+$wrapper = entity_metadata_wrapper(\'node\',$entity);
 $agentid =$wrapper->field_listingagentid->value(); 
 $agent1 = get_agent($agentid);
 
@@ -407,8 +410,11 @@ function show_one ($agent1) {
   if (isset($agent1->pic) && strlen($agent1->pic)>0) {
     print "<div class=classic-agent-right><img src=\'$agent1->pic\' height=135></div>";
   }
-  print "<div class=classic-agent-left><BR>Reach $agent1->first by email at <a href=\'mailto:$agent1->myemail\'>$agent1->myemail</a><BR>";
-  if (isset($agent1->weburl) && strlen($agent1->weburl) > 0) {
+  if (strlen($agent1->weburl) == 0) {
+     print "<BR>";
+  } 
+ print "<div class=classic-agent-left>Reach $agent1->first by email at <a href=\'mailto:$agent1->myemail\'>$agent1->myemail</a><BR>";
+  if (strlen($agent1->weburl) > 0) {
     print "Be sure to visit <a href=$agent1->weburl target=_new>$agent1->weburl</a>";
   }
   print "<HR>";
@@ -422,15 +428,45 @@ function show_one ($agent1) {
 
 function show_both ($agent1, $agent2) {
   $uwrapper1 = entity_metadata_wrapper(\'user\',$agent1);
-  $first1 = $uwrapper1->field_firstname->value();
+  $first1 = $agent1->first;
+  if (!empty($agent1->myemail)) {
+ 	 $email1 = "<a href=mailto:$agent1->myemail>$agent1->myemail</a>";
+  }
+  if (!empty($agent1->weburl)) {
+  	 $url1 = "or visit <a href=$agent1->weburl target=_new>$agent1->weburl</a>";
+  } else {
+  	 $url1 = \'\';
+  }
   $pic1 = \'/sites/default/files/pictures/\' . $agent1->picture->filename;
   $uwrapper2 = entity_metadata_wrapper(\'user\',$agent2);
-  $first2 = $uwrapper2->field_firstname->value();
+  $first2 = $agent2->first;
+  $email2 = "<a href=mailto:$agent2->myemail>$agent2->myemail</a>";
+  if (!empty($agent2->weburl)) {
+  	 $url2 = "or visit <a href=$agent2->weburl target=_new>$agent2->weburl</a>";
+  } else {
+  	 $url2 = \'\';
+  }
   $pic2 = \'/sites/default/files/pictures/\' . $agent2->picture->filename;
   print "<div class=classic-agents-left><img src=\'$pic1\'></div>";
-  print "<div class=classic-agents-middle>$first1 .. Agent contact info goes here .. $first2</div>";
+  print "<div class=classic-agents-middle><center>";
+  
+  print "Reach $first1 by email $email1 $url1<BR>Reach $first2 by email $email2 $url2";
+  print "<HR>";
+
+  if ($agent1->companyname = $agent2->companyname) {  
+	print "<strong>$agent1->fullname</strong> $agent1->phone<BR>";
+  	print "<strong>$agent2->fullname</strong> $agent2->phone<BR>";  
+  	print "$agent1->companyname<BR>";
+  } else {
+	print "<strong>$agent1->fullname</strong> $agent1->phone<BR>";
+  	print "$agent1->companyname<BR>";
+  	print "<strong>$agent2->fullname</strong> $agent2->phone<BR>";  
+  	print "$agent2->companyname<BR>";
+  }
+  print "</center></div>";
   print "<div class=classic-agents-right><img src=\'$pic2\'></div>";
 }
+
 
 function get_agent($agentid) {
   $query = new EntityFieldQuery();
@@ -515,8 +551,7 @@ function formatPhone($num)  {
      $num = preg_replace(\'/([0-9]{3})([0-9]{3})([0-9]{4})/\', \'($1) $2-$3\', $num);
  return $num;
 }
-?>
-</div>',
+?>',
       'format' => 'ds_code',
     ),
     'use_token' => 1,
@@ -526,7 +561,7 @@ function formatPhone($num)  {
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'bathrooms_classic_res_multi_';
-  $ds_field->label = 'Bathrooms - classic (Res/Multi)';
+  $ds_field->label = 'Classic - Bathrooms (Res/Multi)';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -536,14 +571,18 @@ function formatPhone($num)  {
     'code' => array(
       'value' => '<?php
   function bathrooms ($entity) {
-    $baths = $entity->field_baths[\'und\'][0][\'value\']; 
-    print "<div class=classic-left>Bathrooms:</div>";
+    $wrapper = entity_metadata_wrapper(\'node\',$entity);
+    $baths = $wrapper->field_baths->value(); 
+    print "<div class=\'classic-left strong\'>Bathrooms:</div>";
     print "<div class=classic-right>$baths</div>"; 
     print "<div class=clear></div>";
   }
 
-  if (in_array($entity->field_proptype[\'und\'][0][\'tid\'], array(\'4\',\'6\'))) {               // 4=MultiFamily, 6=Residential
-    if (isset($entity->field_baths[\'und\'][0][\'value\'])) {
+  $wrapper = entity_metadata_wrapper(\'node\',$entity);
+  $type  =  $wrapper->field_proptype->value()->name;
+
+  if (in_array($type, array(\'MultiFamily\',\'Residential\'))) {            
+    if ($wrapper->field_baths->value() <> 0  and $wrapper->field_baths->value()<>\' \') {
       bathrooms ($entity);
     }
   }
@@ -557,7 +596,7 @@ function formatPhone($num)  {
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'bedrooms_classic_res_multi_';
-  $ds_field->label = 'Bedrooms - classic (res/multi)';
+  $ds_field->label = 'Classic - Bedrooms (res/multi)';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -567,19 +606,20 @@ function formatPhone($num)  {
     'code' => array(
       'value' => '<?php
   function bedrooms ($entity) {
+    $wrapper = entity_metadata_wrapper(\'node\',$entity);
     $beds = $entity->field_beds[\'und\'][0][\'value\']; 
-    print "<div class=classic-left>Bedrooms:</div>";
+    print "<div class=\'classic-left strong\'>Bedrooms:</div>";
     print "<div class=classic-right>$beds</div>"; 
     print "<div class=clear></div>";
   }
-
-  if (in_array($entity->field_proptype[\'und\'][0][\'tid\'], array(\'4\',\'6\'))) {               // 4=MultiFamily, 6=Residential
-    if (isset($entity->field_beds[\'und\'][0][\'value\'])) {
+  $wrapper = entity_metadata_wrapper(\'node\',$entity);
+  $type  =  $wrapper->field_proptype->value()->name;
+  if (in_array($type, array(\'MultiFamily\',\'Residential\'))) {            
+    if ($wrapper->field_beds->value()<>0 and $wrapper->field_beds->value()<>\' \') {
         bedrooms($entity);
     }
   }
-?>
-',
+?>',
       'format' => 'ds_code',
     ),
     'use_token' => 0,
@@ -589,7 +629,7 @@ function formatPhone($num)  {
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'contour_classic';
-  $ds_field->label = 'Contour - classic/land';
+  $ds_field->label = 'Classic - Contour (land)';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -598,20 +638,20 @@ function formatPhone($num)  {
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php
-  function contour ($entity) {
-    if (isset($entity->field_contour[\'und\'][0][\'value\'])) {
-      $contour = $entity->field_contour[\'und\'][0][\'value\'];
-      if (strlen(trim($contour))==0) { $contour = \'---\'; }
-    } else {
+  function contour ($wrapper) {
+   $contour = $wrapper->field_contour->value();
+   if (strlen(trim($contour))==0) {
       $contour = \'---\';
     }
-    print "<div class=classic-left>Contour:</div>";
+    print "<div class=\'classic-left strong\'>Contour:</div>";
     print "<div class=classic-right>$contour</div>"; 
     print "<div class=clear></div>";
   }
 
-  if ($entity->field_proptype[\'und\'][0][\'tid\'] == 3) {               // 3 = Lots & Land
-     contour($entity);
+  $wrapper = entity_metadata_wrapper(\'node\',$entity);
+  $type  =  $wrapper->field_proptype->value()->name;
+  if (in_array($type, array(\'Land\'))) {            
+     contour($wrapper);
   }
 ?>',
       'format' => 'ds_code',
@@ -742,8 +782,7 @@ function formatPhone($num)  {
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '  <img src="/sites/default/files/oiplogo_0.gif" height=\'55\' align="left">
-  <?php
+      'value' => '  <?php
       $ary = field_fetch_field_values(\'node\',$entity,\'field_status\'); $status = $ary[0];
       switch ($status) {
          case \'Active\': 
@@ -762,7 +801,7 @@ function formatPhone($num)  {
             $img = \'OffMarket.png\';
             break;
         }
-     print "<img src=\'/sites/default/files/$img\' height=\'45\' align=\'right\'>";
+    // print "<img src=\'/sites/default/files/$img\' height=\'45\' align=\'right\'>";
   ?>
   <div class="classic-heading">
     <div class="strong">Oregon Internet Properties LLC</div>
@@ -875,7 +914,7 @@ print "<a href=/$entity->title border=0 align=left>$file_contents</a>";
       'value' => '<div class=clear></div>
 <HR>
 <div class="classic-title-left"><?php $price = number_format($entity->field_listprice[\'und\'][0][\'value\']); print "$ ".$price; ?></div>
-<div class="classic-title-right">
+<div class="classic-title-middle">
     <div class="strong font16">[node:field_adtitle]</div>
     <?php
        $ary = field_fetch_field_values(\'node\',$entity,\'field_internetaddress\'); $showaddress = $ary[0];
@@ -886,8 +925,12 @@ print "<a href=/$entity->title border=0 align=left>$file_contents</a>";
        }
     ?>
     • [node:field_state], [node:field_city] • [node:field_zipcode]
+ </div>
+<div classic-title-right>
+   <img src="/sites/default/files/oiplogo_0.gif" height=\'55\' align="left">
 </div>
 <div class=clear></div>
+<HR>
 ',
       'format' => 'ds_code',
     ),
@@ -941,7 +984,6 @@ print "<a href=/$entity->title border=0 align=left>$file_contents</a>";
       $ad = substr($ad,3,strlen($ad)-8);
     }
     print "<div class=flyer_region_border>$ad</div>";
-
 ?>',
       'format' => 'ds_code',
     ),
@@ -952,7 +994,7 @@ print "<a href=/$entity->title border=0 align=left>$file_contents</a>";
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'listing_id_classic';
-  $ds_field->label = 'Listing ID';
+  $ds_field->label = 'Classic - Listing ID';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -961,8 +1003,9 @@ print "<a href=/$entity->title border=0 align=left>$file_contents</a>";
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php
-  $listingid = $entity->field_mlsno[\'und\'][0][\'value\'];
-  print "<div class=classic-left>Listing ID:</div>";
+  $wrapper=entity_metadata_wrapper(\'node\',$entity);
+  $listingid = $wrapper->field_mlsno->value();
+  print "<div class=\'classic-left strong\'>Listing ID:</div>";
   print "<div class=classic-right><a href=/$listingid>$listingid</a></div>"; 
   print "<div class=clear></div>";
 ?>',
@@ -1002,7 +1045,7 @@ print "<a href=/$entity->title border=0 align=left>$file_contents</a>";
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'lot_size_classic';
-  $ds_field->label = 'Lot Size';
+  $ds_field->label = 'Classic - Lot Size';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -1011,14 +1054,18 @@ print "<a href=/$entity->title border=0 align=left>$file_contents</a>";
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php
-  function lotsize ($entity) {
-    $lotsize = $entity->field_lotsize[\'und\'][0][\'value\']; 
-    print "<div class=classic-left>Lot Size:</div>";
+  function lotsize ($wrapper) {
+     $lotsize = $wrapper->field_lotsize->value(); 
+    print "<div class=\'classic-left strong\'>Lot Size:</div>";
     print "<div class=classic-right>$lotsize</div>"; 
     print "<div class=clear></div>";
   }
-  if (isset($entity->field_lotsize[\'und\'][0][\'value\'])) {
-    lotsize ($entity);
+
+  $wrapper = entity_metadata_wrapper(\'node\',$entity);
+  $type  =  $wrapper->field_proptype->value()->name;
+//  if (in_array($type, array(\'MultiFamily\',\'Residential\'))) {            
+  if ($wrapper->field_lotsize->value() <> 0 and $wrapper->field_lotsize->value() <> \' \') {
+    lotsize ($wrapper);
   }
 ?>',
       'format' => 'ds_code',
@@ -1095,7 +1142,18 @@ print "<a href=/$entity->title border=0 align=left>$file_contents</a>";
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php 
-  // Get the default flyer (\'class\') $tid for reference if errors
+  global $user;   // Logged in user
+  $this_user = user_load($user->uid);
+  $administrator = ($user->uid==1);
+  if (!$administrator) {
+     foreach ($this_user->roles as $role) {        // Not the superuser, so see if this is an administrator
+       if ($role==\'administrator\') {
+          $administrator = TRUE;
+       }
+     } 
+  }
+  
+// Get the default flyer (\'class\') $tid for reference if errors
 
   $classic_tid = oip_tweaks_gettid(\'flyers\',\'Classic Flyer\');
   $wrapper = entity_metadata_wrapper(\'node\',$entity);
@@ -1121,10 +1179,14 @@ print "<a href=/$entity->title border=0 align=left>$file_contents</a>";
   //  $flyer=$wrapper->field_flyer->value()->field_flyer_label[\'und\'][0][\'safe_value\'];
  
    // Basic membership can only use the default (classic) flyer
+    $editflyer = FALSE;
     foreach ($agent->roles as $role) {
-      if ($role==\'basic membership\') {
+       if ($role==\'basic membership\') {
            unset ($flyer);
-      } 
+       } 
+       if ($role==\'gold membership\' or $role==\'platinum membership\') {
+           $editflyer=TRUE;
+       }
     }
   
     // Next, get the flyer type from the listing. If #pics on the listing is < #pics on the flyer, use the default flyer
@@ -1171,6 +1233,12 @@ print "<a href=/$entity->title border=0 align=left>$file_contents</a>";
   }
   print "<div id=listing_displayaddress>";
   print "Status: ". $desc."</div><br /><br />";
+
+  // If this is administrator or the owner of this listing & the role is one of the two upgraded realtors, display link to edit 
+  $MyListing = (($user->uid==$entity->uid and $editflyer) or $administrator);
+  if ($MyListing) {
+     print "Edit Printable Flyer & Highlights<BR><BR>";
+  }
 
   // Next, get the flyer taxonomy record and see how many images it requires. 
   $taxonomy = taxonomy_term_load($tid);
@@ -1221,7 +1289,9 @@ print "<a href=/$entity->title border=0 align=left>$file_contents</a>";
   if (isset($entity->field_website[\'und\'][0])) {
      print \'<a href="\'.$entity->field_website[\'und\'][0][\'url\'].\'" target="_blank">Website</a>\'." <BR><BR>";
   }
-   print  flag_create_link(\'listings\', $entity->nid);
+  
+  // Save listing 
+  print  flag_create_link(\'listings\', $entity->did);
 ?>',
       'format' => 'ds_code',
     ),
@@ -1401,7 +1471,7 @@ Licensed to sell Real Estate in the State of Oregon. Information deemed reliable
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'row1_classic_res_multi_';
-  $ds_field->label = 'Row1 - classic (res/multi)';
+  $ds_field->label = 'Classic - Row1 (res/multi)';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -1410,23 +1480,25 @@ Licensed to sell Real Estate in the State of Oregon. Information deemed reliable
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php 
-  function row1 ($entity) {
-    $ary = field_fetch_field_values(\'node\',$entity,\'field_exteriordescription\'); 
-    if (isset($ary[0])) { $exterior = $ary[0];  } else { $exterior = \'\'; }
-    $ary = field_fetch_field_values(\'node\',$entity,\'field_taxes\'); $taxes = $ary[0];
-    print "<div class=flyer_region_border>";
+  function row1 ($wrapper) {
+    $exterior = $wrapper->field_exteriordescription->value();
+     $taxes = number_format( $wrapper->field_taxes->value() );
+    print "<HR>";
     print "  <div class=classic_row_left>";
-    print "    <div class=classic_row_col1>Exterior:</div>";
+    print "    <div class=\'classic_row_col1 strong\'>Exterior:</div>";
     print "    <div class=classic_row_col2>$exterior</div>";
     print "  </div>";
     print "  <div class=classic_row_right>";
-    print "    <div class=classic_row_col3>Taxes:</div><div class=classic_row_col4>$ $taxes</div>";
+    print "    <div class=\'classic_row_col3 strong\'>Taxes:</div><div class=classic_row_col4>$ $taxes</div>";
     print "  </div>";
     print "  <div class=clear></div>";
-    print "</div>";
+    print "<HR>";
   }
-  if ($entity->field_proptype[\'und\'][0][\'tid\'] <> \'3\') {               // All but land
-     row1 ($entity);
+
+  $wrapper = entity_metadata_wrapper(\'node\',$entity);
+  $type  =  $wrapper->field_proptype->value()->name;
+  if (!in_array($type, array(\'Land\'))) {            
+     row1 ($wrapper);
   }
 ?>
 ',
@@ -1439,7 +1511,7 @@ Licensed to sell Real Estate in the State of Oregon. Information deemed reliable
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'row2_classic_com_';
-  $ds_field->label = 'Row2 - classic (com)';
+  $ds_field->label = 'Classic - Row2 (commercial)';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -1448,24 +1520,24 @@ Licensed to sell Real Estate in the State of Oregon. Information deemed reliable
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php 
-  function row2a ($entity) {
-    $ary = field_fetch_field_values(\'node\',$entity,\'field_present_use\'); 
-    if (isset($ary[0])) { $present_use = $ary[0]; } else { $present_use = \'\'; }
-    $ary = field_fetch_field_values(\'node\',$entity,\'field_roof\'); 
-    if (isset($ary[0])) { $roof = $ary[0]; } else { $roof = \'\'; }
-    print "<div class=flyer_region_border>";
-    print "  <div class=classic_row_left>";
-    print "    <div class=classic_row_col1>Use:</div>";
+  function row2a ($wrapper) {
+    $present_use = $wrapper->field_present_use->value();
+    $roof = $wrapper->field_roof->value();
+     print "  <div class=classic_row_left>";
+    print "    <div class=\'classic_row_col1 strong\'>Present Use:</div>";
     print "    <div class=classic_row_col2>$present_use</div>";
     print "  </div>";
     print "  <div class=classic_row_right>";
-    print "    <div class=classic_row_col3>Roof:</div><div class=classic_row_col4>$roof</div>";
+    print "    <div class=\'classic_row_col3 strong\'>Roof:</div><div class=classic_row_col4>$roof</div>";
     print "  </div>";
     print "  <div class=clear></div>";
-    print "</div>";
-  }
-  if (in_array($entity->field_proptype[\'und\'][0][\'tid\'], array(\'1\'))) {               // All but land
-    row2a($entity);
+    print "<HR>";
+ }
+
+  $wrapper = entity_metadata_wrapper(\'node\',$entity);
+  $type  =  $wrapper->field_proptype->value()->name;
+  if (!in_array($type, array(\'MultiFamily\',\'Residential\',\'Land\'))) {            
+    row2a($wrapper);
   }
 ?>
 ',
@@ -1478,7 +1550,7 @@ Licensed to sell Real Estate in the State of Oregon. Information deemed reliable
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'row2_classic_res_mul_com_';
-  $ds_field->label = 'Row2 - classic (res/mul)';
+  $ds_field->label = 'Classic - Row2 (res/mul)';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -1487,27 +1559,33 @@ Licensed to sell Real Estate in the State of Oregon. Information deemed reliable
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php 
-  function row2 ($entity) {
-    $ary = field_fetch_field_values(\'node\',$entity,\'field_style\'); 
-    if (isset($ary[0])) { $style = $ary[0]; } else { $style = \'\'; }
-    $ary = field_fetch_field_values(\'node\',$entity,\'field_garagetype\'); 
-    if (isset($ary[0])) { $garagetype = $ary[0]; } else { $garagetype = \'\'; }
-    print "<div class=flyer_region_border>";
+  function row2 ($wrapper) {
+    $style = $wrapper->field_style->value()[\'value\'];
+ 
+   $garageno = $wrapper->field_garagespaces->value();
+    $garagetype = $wrapper->field_garagetype->value();
+    if (strlen(trim($garagetype)) > 10) {
+        $ary = explode(\',\',$garagetype);
+        $garagetype = $ary[0];
+    }
+    
     print "  <div class=classic_row_left>";
-    print "    <div class=classic_row_col1>Style:</div>";
+    print "    <div class=\'classic_row_col1 strong\'>Style:</div>";
     print "    <div class=classic_row_col2>$style</div>";
     print "  </div>";
     print "  <div class=classic_row_right>";
-    print "    <div class=classic_row_col3>Garage:</div><div class=classic_row_col4>$garagetype</div>";
+    print "    <div class=\'classic_row_col3 strong\'>Garage:</div><div class=classic_row_col4>$garageno $garagetype</div>";
     print "  </div>";
     print "  <div class=clear></div>";
-    print "</div>";
+    print "<HR>";
   }
-  if (in_array($entity->field_proptype[\'und\'][0][\'tid\'], array(\'4\',\'6\'))) {               // All but land
-    row2($entity);
+
+  $wrapper = entity_metadata_wrapper(\'node\',$entity);
+  $type  =  $wrapper->field_proptype->value()->name;
+  if (in_array($type, array(\'MultiFamily\',\'Residential\'))) {            
+    row2($wrapper);
   }
-?>
-',
+?>',
       'format' => 'ds_code',
     ),
     'use_token' => 0,
@@ -1517,7 +1595,7 @@ Licensed to sell Real Estate in the State of Oregon. Information deemed reliable
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'row3_classic_res_mul_';
-  $ds_field->label = 'Row3 - classic (res/mul)';
+  $ds_field->label = 'Classic - Row3 (res/mul)';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -1526,31 +1604,32 @@ Licensed to sell Real Estate in the State of Oregon. Information deemed reliable
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php 
-  function row3 ($entity) {
-    $ary = field_fetch_field_values(\'node\',$entity,\'field_schoole\'); 
-    if (isset($ary[0])) { $schoole = \'Elem: \' . $ary[0]; } else { $schoole = \'\'; }
-    $ary = field_fetch_field_values(\'node\',$entity,\'field_schoolj\'); 
-    if (isset($ary[0])) { $schoolj = \'Mdl: \' . $ary[0]; } else { $schoolj = \'\'; }
-    $ary = field_fetch_field_values(\'node\',$entity,\'field_schoolh\'); 
-    if (isset($ary[0])) { $schoolh = \'High: \' . $ary[0]; } else { $schoolh = \'\'; }
-    $ary = field_fetch_field_values(\'node\',$entity,\'field_heat\'); 
-    if (isset($ary[0])) { $heat = $ary[0]; } else { $heat = \'\'; }
-    print "<div class=flyer_region_border>";
-    print "  <div class=classic_row_left>";
-    print "    <div class=classic_row_col1>Schools:</div>";
+  function row3 ($wrapper) {
+     $schoole = $wrapper->field_schoole->value();
+    if (!empty($schoole)) {  $schoole = \'Elem: \' . $schoole; }
+    $schoolj = $wrapper->field_schoolj->value();
+    if (!empty($schoolj)) {  $schoolj = \'Mid: \' . $schoolj; }
+    $schoolh = $wrapper->field_schoolh->value();
+    if (!empty($schoolh)) {  $schoolh = \'High: \' . $schoolh; }
+    $heat = $wrapper->field_heat->value();
+
+     print "  <div class=classic_row_left>";
+    print "    <div class=\'classic_row_col1 strong\'>Schools:</div>";
     print "    <div class=classic_row_col2>$schoolh; $schoolj; $schoole</div>";
     print "  </div>";
     print "  <div class=classic_row_right>";
-    print "    <div class=classic_row_col3>Heat:</div><div class=classic_row_col4>$heat</div>";
+    print "    <div class=\'classic_row_col3 strong\'>Heat:</div><div class=classic_row_col4>$heat</div>";
     print "  </div>";
     print "  <div class=clear></div>";
-    print "</div>";
+    print "<HR>";
   }
-  if (in_array($entity->field_proptype[\'und\'][0][\'tid\'], array(\'4\',\'6\'))) {               // All but land
-    row3($entity);
+
+  $wrapper = entity_metadata_wrapper(\'node\',$entity);
+  $type  =  $wrapper->field_proptype->value()->name;
+  if (in_array($type, array(\'MultiFamily\',\'Residential\'))) {            
+    row3($wrapper);
   }
-?>
-',
+?>',
       'format' => 'ds_code',
     ),
     'use_token' => 0,
@@ -1575,7 +1654,7 @@ Licensed to sell Real Estate in the State of Oregon. Information deemed reliable
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'sqft_classic_res_multi_';
-  $ds_field->label = 'Sqft - classic (res/multi)';
+  $ds_field->label = 'Classic (res/multi) - Square Feet';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -1584,11 +1663,13 @@ Licensed to sell Real Estate in the State of Oregon. Information deemed reliable
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php
-if ($entity->field_proptype[\'und\'][0][\'tid\'] <> \'3\') {               // All but land
-  $sqft = $entity->field_sqft[\'und\'][0][\'value\']; 
-  print "<div class=classic-left>Square Feet:</div>";
-  print "<div class=classic-right>$sqft</div>"; 
-  print "<div class=clear></div>";
+  $wrapper = entity_metadata_wrapper(\'node\',$entity);
+  $type  =  $wrapper->field_proptype->value()->name;
+  if (!in_array($type, array(\'Land\'))) {          // all but land  
+     $sqft = number_format( $wrapper->field_sqft->value() ); 
+     print "<div class=\'classic-left strong\'>Square Feet:</div>";
+     print "<div class=classic-right>$sqft</div>"; 
+     print "<div class=clear></div>";
 }
 ?>',
       'format' => 'ds_code',
@@ -1600,7 +1681,7 @@ if ($entity->field_proptype[\'und\'][0][\'tid\'] <> \'3\') {               // Al
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'taxes';
-  $ds_field->label = 'Taxes - Classic (land)';
+  $ds_field->label = 'Classic - Taxes (land)';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -1609,12 +1690,14 @@ if ($entity->field_proptype[\'und\'][0][\'tid\'] <> \'3\') {               // Al
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php
-if ($entity->field_proptype[\'und\'][0][\'tid\'] == \'3\') {
-  $taxes = $entity->field_taxes[\'und\'][0][\'value\']; 
-  print "<div class=classic-left>Taxes:</div>";
-  print "<div class=classic-right>$ $taxes</div>"; 
-  print "<div class=clear></div>";
-}
+  $wrapper = entity_metadata_wrapper(\'node\',$entity);
+  $type  =  $wrapper->field_proptype->value()->name;
+  if (in_array($type, array(\'Land\'))) {            
+      $taxes = number_format( $wrapper->field_taxes->value() );
+      print "<div class=\'classic-left strong\'>Taxes:</div>";
+      print "<div class=classic-right>$ $taxes</div>"; 
+      print "<div class=clear></div>";
+  }
 ?>',
       'format' => 'ds_code',
     ),
@@ -1644,7 +1727,7 @@ if ($entity->field_proptype[\'und\'][0][\'tid\'] == \'3\') {
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'utilities_classic';
-  $ds_field->label = 'Utilities - classic/land';
+  $ds_field->label = 'Classic - Schools/Utilities (land)';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -1653,10 +1736,27 @@ if ($entity->field_proptype[\'und\'][0][\'tid\'] == \'3\') {
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php
-if ($entity->field_proptype[\'und\'][0][\'tid\'] == 3) {               // 3 = Lots & Land
-  $utilities = $entity->field_utilities[\'und\'][0][\'value\'];
-  print "<div class=flyer_region_border><strong>Utilities: </strong>$utilities</div>";
-}
+  $wrapper = entity_metadata_wrapper(\'node\',$entity);
+  $type  =  $wrapper->field_proptype->value()->name;
+  if (in_array($type, array(\'Land\'))) { 
+    $schoole = $wrapper->field_schoole->value();
+    if (!empty($schoole)) {  $schoole = \'Elem: \' . $schoole; }
+    $schoolj = $wrapper->field_schoolj->value();
+    if (!empty($schoolj)) {  $schoolj = \'Mid: \' . $schoolj; }
+    $schoolh = $wrapper->field_schoolh->value();
+    if (!empty($schoolh)) {  $schoolh = \'High: \' . $schoolh; }
+    $utilities = $wrapper->field_utilities->value();
+    print "<HR>";
+    print "  <div class=classic_row_left>";
+    print "    <div class=\'classic_row_col1 strong\'>Schools:</div>";
+    print "    <div class=classic_row_col2>$schoolh; $schoolj; $schoole</div>";
+    print "  </div>";
+    print "  <div class=classic_row_right>";
+    print "    <div class=\'classic_row_col3 strong\'>Utilities:</div><div class=classic_row_col4>$utilities</div>";
+    print "  </div>";
+    print "  <div class=clear></div>";
+    print "<HR>";
+  }
 ?>',
       'format' => 'ds_code',
     ),
@@ -1667,7 +1767,7 @@ if ($entity->field_proptype[\'und\'][0][\'tid\'] == 3) {               // 3 = Lo
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'yr_build_classic_res_multi_';
-  $ds_field->label = 'Yr Build - classic (res/multi)';
+  $ds_field->label = 'Classic - Yr Built (res/multi)';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -1676,13 +1776,15 @@ if ($entity->field_proptype[\'und\'][0][\'tid\'] == 3) {               // 3 = Lo
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php
-if ($entity->field_proptype[\'und\'][0][\'tid\'] <> \'3\') {               // All but land
-  $built = $entity->field_yearbuilt[\'und\'][0][\'value\']; 
-  $mod = $entity->field_yearbuiltmod[\'und\'][0][\'value\']; 
-  print "<div class=classic-left>Year Built:</div>";
-  print "<div class=classic-right>$built $mod</div>"; 
-  print "<div class=clear></div>";
-}
+  $wrapper = entity_metadata_wrapper(\'node\',$entity);
+  $type  =  $wrapper->field_proptype->value()->name;
+  if (!in_array($type, array(\'Land\'))) {            
+     $built = $wrapper->field_yearbuilt->value(); 
+     $mod = $wrapper->field_yearbuiltmod->value(); 
+     print "<div class=\'classic-left strong\'>Year Built:</div>";
+     print "<div class=classic-right>$built $mod</div>"; 
+     print "<div class=clear></div>";
+  }
 ?>',
       'format' => 'ds_code',
     ),
@@ -1693,7 +1795,7 @@ if ($entity->field_proptype[\'und\'][0][\'tid\'] <> \'3\') {               // Al
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'zone_classic';
-  $ds_field->label = 'Zone - classic/land';
+  $ds_field->label = 'Classic - Zone (land)';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -1702,16 +1804,14 @@ if ($entity->field_proptype[\'und\'][0][\'tid\'] <> \'3\') {               // Al
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php
-if ($entity->field_proptype[\'und\'][0][\'tid\'] == 3) {               // 3 = Lots & Land
-  if (isset($entity->field_zoning[\'und\'][0][\'value\'])) {
-    $zoning = $entity->field_zoning[\'und\'][0][\'value\'];
-  } else {
-    $zoning = \'---\';
-  } 
-  print "<div class=classic-left>Zoned:</div>";
-  print "<div class=classic-right>$zoning</div>"; 
-  print "<div class=clear></div>";
-}
+  $wrapper = entity_metadata_wrapper(\'node\',$entity);
+  $type  =  $wrapper->field_proptype->value()->name;
+  if (in_array($type, array(\'Land\'))) {            
+     $zoning = $wrapper->field_zoning->value();
+     print "<div class=\'classic-left strong\'>Zoned:</div>";
+     print "<div class=classic-right>$zoning</div>"; 
+     print "<div class=clear></div>";
+  }
 ?>',
       'format' => 'ds_code',
     ),
@@ -1826,38 +1926,37 @@ function oip_listing_ds_layout_settings_info() {
   $ds_layout->view_mode = 'classic_flyer';
   $ds_layout->layout = 'classic_flyer';
   $ds_layout->settings = array(
-    'hide_empty_regions' => 1,
-    'hide_sidebars' => 0,
     'regions' => array(
       'header' => array(
         0 => 'flyer_heading_classic_',
         1 => 'flyer_title_address_classic_',
       ),
       'left' => array(
-        0 => 'flyer_picture_440px_w_o_gallery',
+        2 => 'flyer_picture_440px_w_o_gallery',
       ),
       'right' => array(
-        0 => 'bedrooms_classic_res_multi_',
-        1 => 'bathrooms_classic_res_multi_',
-        2 => 'sqft_classic_res_multi_',
-        3 => 'yr_build_classic_res_multi_',
-        4 => 'lot_size_classic',
-        5 => 'acres_classic',
-        6 => 'zone_classic',
-        7 => 'contour_classic',
-        8 => 'taxes',
-        9 => 'listing_id_classic',
-        10 => 'terms_classic',
+        3 => 'bedrooms_classic_res_multi_',
+        4 => 'bathrooms_classic_res_multi_',
+        5 => 'sqft_classic_res_multi_',
+        6 => 'yr_build_classic_res_multi_',
+        7 => 'lot_size_classic',
+        8 => 'acres_classic',
+        9 => 'zone_classic',
+        10 => 'contour_classic',
+        11 => 'taxes',
+        12 => 'listing_id_classic',
+        13 => 'terms_classic',
+        14 => 'classic_multiple_pics_exist',
       ),
       'footer' => array(
-        0 => 'row1_classic_res_multi_',
-        1 => 'row2_classic_res_mul_com_',
-        2 => 'row2_classic_com_',
-        3 => 'row3_classic_res_mul_',
-        4 => 'utilities_classic',
-        5 => 'listing_description',
-        6 => 'agents_classic',
-        7 => 'rmls_disclaimer',
+        15 => 'row1_classic_res_multi_',
+        16 => 'row2_classic_res_mul_com_',
+        17 => 'row2_classic_com_',
+        18 => 'row3_classic_res_mul_',
+        19 => 'utilities_classic',
+        20 => 'classic_listing_description',
+        21 => 'agents_classic',
+        22 => 'rmls_disclaimer',
       ),
     ),
     'fields' => array(
@@ -1875,30 +1974,28 @@ function oip_listing_ds_layout_settings_info() {
       'taxes' => 'right',
       'listing_id_classic' => 'right',
       'terms_classic' => 'right',
+      'classic_multiple_pics_exist' => 'right',
       'row1_classic_res_multi_' => 'footer',
       'row2_classic_res_mul_com_' => 'footer',
       'row2_classic_com_' => 'footer',
       'row3_classic_res_mul_' => 'footer',
       'utilities_classic' => 'footer',
-      'listing_description' => 'footer',
+      'classic_listing_description' => 'footer',
       'agents_classic' => 'footer',
       'rmls_disclaimer' => 'footer',
     ),
-    'classes' => array(
-      'header' => array(
-        'flyer_container' => 'flyer_container',
-        'flyer_region_border' => 'flyer_region_border',
-      ),
-      'left' => array(
-        'flyer_container' => 'flyer_container',
-      ),
-      'right' => array(
-        'flyer_container' => 'flyer_container',
-      ),
-      'footer' => array(
-        'flyer_container' => 'flyer_container',
-      ),
+    'classes' => array(),
+    'wrappers' => array(
+      'header' => 'div',
+      'left' => 'div',
+      'right' => 'div',
+      'footer' => 'div',
     ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
   );
   $export['node|listing|classic_flyer'] = $ds_layout;
 

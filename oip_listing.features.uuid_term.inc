@@ -11,6 +11,14 @@ function oip_listing_uuid_features_default_terms() {
   $terms = array();
 
   $terms[] = array(
+    'name' => 'Payroll',
+    'description' => '',
+    'format' => 'filtered_html',
+    'weight' => 0,
+    'uuid' => '07722703-0dcd-4a3e-bb58-f9392bf1f734',
+    'vocabulary_machine_name' => 'company_type',
+  );
+  $terms[] = array(
     'name' => 'BSF',
     'description' => 'Broker Specific Feed',
     'format' => 'filtered_html',
@@ -30,7 +38,7 @@ function oip_listing_uuid_features_default_terms() {
     'name' => 'Printer',
     'description' => 'Printer: quick printer, offset printer; business cards, banners, flyers',
     'format' => 'filtered_html',
-    'weight' => 3,
+    'weight' => 0,
     'uuid' => '2704b66e-00e1-46d1-874f-890815a10071',
     'vocabulary_machine_name' => 'company_type',
   );
@@ -38,7 +46,7 @@ function oip_listing_uuid_features_default_terms() {
     'name' => 'Builder',
     'description' => 'Builder',
     'format' => 'filtered_html',
-    'weight' => 1,
+    'weight' => 0,
     'uuid' => '4521d706-4990-4638-b3f7-37a33f54d0a7',
     'vocabulary_machine_name' => 'company_type',
   );
@@ -46,7 +54,7 @@ function oip_listing_uuid_features_default_terms() {
     'name' => 'Internet Service Provider',
     'description' => 'Website Hosting, DSL or Dialup connection; email',
     'format' => 'filtered_html',
-    'weight' => 2,
+    'weight' => 0,
     'uuid' => '4c2b0ec4-75b2-462d-9597-22a1861ee59e',
     'vocabulary_machine_name' => 'company_type',
   );
@@ -67,12 +75,36 @@ function oip_listing_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'property_type',
   );
   $terms[] = array(
+    'name' => 'Tax Preparation',
+    'description' => '',
+    'format' => 'filtered_html',
+    'weight' => 0,
+    'uuid' => '7576c2ca-0e2e-451d-ab31-6464caa81570',
+    'vocabulary_machine_name' => 'company_type',
+  );
+  $terms[] = array(
+    'name' => 'Business Cards',
+    'description' => NULL,
+    'format' => NULL,
+    'weight' => 0,
+    'uuid' => '806634c9-98b3-4c52-8620-5d9990c70e5b',
+    'vocabulary_machine_name' => 'company_type',
+  );
+  $terms[] = array(
     'name' => 'Land',
     'description' => 'Lots and Land',
     'format' => 'filtered_html',
     'weight' => 0,
     'uuid' => '82fedd62-162e-40f9-8408-248e755d2d96',
     'vocabulary_machine_name' => 'property_type',
+  );
+  $terms[] = array(
+    'name' => 'Banners',
+    'description' => NULL,
+    'format' => NULL,
+    'weight' => 0,
+    'uuid' => '87590784-9c52-4088-afa1-d36d3e0ec7f3',
+    'vocabulary_machine_name' => 'company_type',
   );
   $terms[] = array(
     'name' => 'Rental',
@@ -111,7 +143,7 @@ function oip_listing_uuid_features_default_terms() {
     'name' => 'Real Estate',
     'description' => 'Real Estate Agent or Agency',
     'format' => 'filtered_html',
-    'weight' => 4,
+    'weight' => 0,
     'uuid' => '93e1a465-c5dd-4cb1-b2ed-f8a0dff740e1',
     'vocabulary_machine_name' => 'company_type',
   );
@@ -151,6 +183,14 @@ function oip_listing_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'company_type',
   );
   $terms[] = array(
+    'name' => 'Domain Management',
+    'description' => NULL,
+    'format' => NULL,
+    'weight' => 0,
+    'uuid' => 'd297f872-c44d-4fde-a597-a6dda566320d',
+    'vocabulary_machine_name' => 'company_type',
+  );
+  $terms[] = array(
     'name' => 'Commercial Lease',
     'description' => 'Commercial Lease',
     'format' => 'filtered_html',
@@ -170,7 +210,7 @@ function oip_listing_uuid_features_default_terms() {
     'name' => 'Website',
     'description' => 'Domain registration, website design and development, hosting',
     'format' => 'filtered_html',
-    'weight' => 5,
+    'weight' => 0,
     'uuid' => 'e7e8c1a4-67bd-4fa6-9d65-49005f525542',
     'vocabulary_machine_name' => 'company_type',
   );
@@ -181,6 +221,14 @@ function oip_listing_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'ed16803e-88ea-4834-adb4-aca905415d6f',
     'vocabulary_machine_name' => 'mls_type',
+  );
+  $terms[] = array(
+    'name' => 'Accounting',
+    'description' => '',
+    'format' => 'filtered_html',
+    'weight' => 0,
+    'uuid' => 'f9789945-553e-4a26-ab1b-11e04dbad088',
+    'vocabulary_machine_name' => 'company_type',
   );
   $terms[] = array(
     'name' => 'BSP',

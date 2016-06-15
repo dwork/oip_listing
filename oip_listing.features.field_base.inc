@@ -341,7 +341,7 @@ function oip_listing_field_default_field_bases() {
   // Exported field_base: 'field_companytype'
   $field_bases['field_companytype'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => 3,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_companytype',

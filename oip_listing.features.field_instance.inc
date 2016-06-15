@@ -1550,7 +1550,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 93,
+        'weight' => 103,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -1613,7 +1613,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 60,
+        'weight' => 72,
       ),
       'default' => array(
         'label' => 'inline',
@@ -1671,7 +1671,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 97,
+        'weight' => 107,
       ),
       'default' => array(
         'label' => 'above',
@@ -1735,7 +1735,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 52,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -1793,7 +1793,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 116,
+        'weight' => 126,
       ),
       'default' => array(
         'label' => 'above',
@@ -1851,7 +1851,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 74,
+        'weight' => 86,
       ),
       'default' => array(
         'label' => 'inline',
@@ -1909,7 +1909,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 76,
+        'weight' => 88,
       ),
       'default' => array(
         'label' => 'inline',
@@ -1967,7 +1967,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 61,
+        'weight' => 73,
       ),
       'default' => array(
         'label' => 'inline',
@@ -2025,7 +2025,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 95,
+        'weight' => 105,
       ),
       'default' => array(
         'label' => 'above',
@@ -2089,7 +2089,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 94,
+        'weight' => 104,
       ),
       'default' => array(
         'label' => 'above',
@@ -2153,7 +2153,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 51,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -2212,7 +2212,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 50,
+        'weight' => 63,
       ),
       'default' => array(
         'label' => 'inline',
@@ -2270,7 +2270,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 62,
+        'weight' => 74,
       ),
       'default' => array(
         'label' => 'inline',
@@ -2328,7 +2328,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 49,
       ),
       'default' => array(
         'label' => 'above',
@@ -2379,7 +2379,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 63,
+        'weight' => 75,
       ),
       'default' => array(
         'label' => 'inline',
@@ -2437,7 +2437,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 119,
+        'weight' => 129,
       ),
       'default' => array(
         'label' => 'above',
@@ -2495,7 +2495,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 65,
+        'weight' => 77,
       ),
       'default' => array(
         'label' => 'inline',
@@ -2553,7 +2553,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 44,
+        'weight' => 57,
       ),
       'default' => array(
         'label' => 'above',
@@ -2610,7 +2610,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 122,
+        'weight' => 132,
       ),
       'default' => array(
         'label' => 'inline',
@@ -2675,7 +2675,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 66,
+        'weight' => 78,
       ),
       'default' => array(
         'label' => 'inline',
@@ -2733,7 +2733,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 67,
+        'weight' => 79,
       ),
       'default' => array(
         'label' => 'inline',
@@ -2791,7 +2791,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 68,
+        'weight' => 80,
       ),
       'default' => array(
         'label' => 'inline',
@@ -2849,7 +2849,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 69,
+        'weight' => 81,
       ),
       'default' => array(
         'label' => 'inline',
@@ -2907,7 +2907,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 55,
+        'weight' => 67,
       ),
       'default' => array(
         'label' => 'inline',
@@ -2975,7 +2975,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 48,
       ),
       'default' => array(
         'label' => 'above',
@@ -3025,7 +3025,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 70,
+        'weight' => 82,
       ),
       'default' => array(
         'label' => 'inline',
@@ -3083,7 +3083,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 107,
+        'weight' => 117,
       ),
       'default' => array(
         'label' => 'inline',
@@ -3147,7 +3147,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 106,
+        'weight' => 116,
       ),
       'default' => array(
         'label' => 'inline',
@@ -3205,7 +3205,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 84,
+        'weight' => 96,
       ),
       'default' => array(
         'label' => 'above',
@@ -3266,7 +3266,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 71,
+        'weight' => 83,
       ),
       'default' => array(
         'label' => 'inline',
@@ -3324,7 +3324,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 72,
+        'weight' => 84,
       ),
       'default' => array(
         'label' => 'inline',
@@ -3382,7 +3382,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 73,
+        'weight' => 85,
       ),
       'default' => array(
         'label' => 'inline',
@@ -3444,7 +3444,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 77,
+        'weight' => 89,
       ),
       'default' => array(
         'label' => 'inline',
@@ -3498,7 +3498,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 56,
+        'weight' => 68,
       ),
       'default' => array(
         'label' => 'inline',
@@ -3561,7 +3561,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 123,
+        'weight' => 133,
       ),
       'default' => array(
         'label' => 'inline',
@@ -3626,7 +3626,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 115,
+        'weight' => 125,
       ),
       'default' => array(
         'label' => 'above',
@@ -3684,7 +3684,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 121,
+        'weight' => 131,
       ),
       'default' => array(
         'label' => 'above',
@@ -3748,7 +3748,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 75,
+        'weight' => 87,
       ),
       'default' => array(
         'label' => 'inline',
@@ -3806,7 +3806,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 99,
+        'weight' => 109,
       ),
       'default' => array(
         'label' => 'above',
@@ -3864,7 +3864,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 47,
+        'weight' => 60,
       ),
       'default' => array(
         'label' => 'inline',
@@ -3928,7 +3928,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 46,
+        'weight' => 59,
       ),
       'default' => array(
         'label' => 'inline',
@@ -3992,7 +3992,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 101,
+        'weight' => 111,
       ),
       'default' => array(
         'label' => 'above',
@@ -4050,7 +4050,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 109,
+        'weight' => 119,
       ),
       'default' => array(
         'label' => 'inline',
@@ -4108,7 +4108,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 58,
+        'weight' => 70,
       ),
       'default' => array(
         'label' => 'inline',
@@ -4172,7 +4172,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 59,
+        'weight' => 71,
       ),
       'default' => array(
         'label' => 'inline',
@@ -4236,7 +4236,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 113,
+        'weight' => 123,
       ),
       'default' => array(
         'label' => 'above',
@@ -4293,7 +4293,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 47,
       ),
       'default' => array(
         'label' => 'above',
@@ -4360,7 +4360,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 54,
       ),
       'default' => array(
         'label' => 'above',
@@ -4418,7 +4418,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 118,
+        'weight' => 128,
       ),
       'default' => array(
         'label' => 'above',
@@ -4476,7 +4476,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 53,
       ),
       'default' => array(
         'label' => 'above',
@@ -4528,7 +4528,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 91,
+        'weight' => 101,
       ),
       'default' => array(
         'label' => 'inline',
@@ -4589,7 +4589,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 45,
+        'weight' => 58,
       ),
       'default' => array(
         'label' => 'inline',
@@ -4644,7 +4644,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 120,
+        'weight' => 130,
       ),
       'default' => array(
         'label' => 'inline',
@@ -4701,7 +4701,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 88,
+        'weight' => 98,
       ),
       'default' => array(
         'label' => 'inline',
@@ -4754,7 +4754,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 79,
+        'weight' => 91,
       ),
       'default' => array(
         'label' => 'inline',
@@ -4816,7 +4816,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 46,
       ),
       'default' => array(
         'label' => 'above',
@@ -4864,7 +4864,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 114,
+        'weight' => 124,
       ),
       'default' => array(
         'label' => 'above',
@@ -4922,7 +4922,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 108,
+        'weight' => 118,
       ),
       'default' => array(
         'label' => 'inline',
@@ -4980,7 +4980,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 111,
+        'weight' => 121,
       ),
       'default' => array(
         'label' => 'inline',
@@ -5038,7 +5038,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 110,
+        'weight' => 120,
       ),
       'default' => array(
         'label' => 'inline',
@@ -5096,7 +5096,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 92,
+        'weight' => 102,
       ),
       'default' => array(
         'label' => 'inline',
@@ -5157,7 +5157,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 81,
+        'weight' => 93,
       ),
       'default' => array(
         'label' => 'inline',
@@ -5212,7 +5212,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 51,
+        'weight' => 64,
       ),
       'default' => array(
         'label' => 'inline',
@@ -5285,7 +5285,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 103,
+        'weight' => 113,
       ),
       'default' => array(
         'label' => 'inline',
@@ -5360,7 +5360,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 104,
+        'weight' => 114,
       ),
       'default' => array(
         'label' => 'inline',
@@ -5424,7 +5424,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 105,
+        'weight' => 115,
       ),
       'default' => array(
         'label' => 'inline',
@@ -5486,7 +5486,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 42,
+        'weight' => 55,
       ),
       'default' => array(
         'label' => 'inline',
@@ -5541,7 +5541,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 96,
+        'weight' => 106,
       ),
       'default' => array(
         'label' => 'above',
@@ -5605,7 +5605,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 43,
+        'weight' => 56,
       ),
       'default' => array(
         'label' => 'inline',
@@ -5667,7 +5667,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 98,
+        'weight' => 108,
       ),
       'default' => array(
         'label' => 'above',
@@ -5723,7 +5723,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 64,
+        'weight' => 76,
       ),
       'default' => array(
         'label' => 'inline',
@@ -5781,7 +5781,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 117,
+        'weight' => 127,
       ),
       'default' => array(
         'label' => 'above',
@@ -5839,7 +5839,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 57,
+        'weight' => 69,
       ),
       'default' => array(
         'label' => 'inline',
@@ -5897,7 +5897,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 83,
+        'weight' => 95,
       ),
       'default' => array(
         'label' => 'inline',
@@ -5961,7 +5961,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 82,
+        'weight' => 94,
       ),
       'default' => array(
         'label' => 'inline',
@@ -6019,7 +6019,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 48,
+        'weight' => 61,
       ),
       'default' => array(
         'label' => 'inline',
@@ -6077,7 +6077,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 89,
+        'weight' => 99,
       ),
       'default' => array(
         'label' => 'inline',
@@ -6134,7 +6134,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 52,
+        'weight' => 65,
       ),
       'default' => array(
         'label' => 'inline',
@@ -6207,7 +6207,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 112,
+        'weight' => 122,
       ),
       'default' => array(
         'label' => 'inline',
@@ -6265,7 +6265,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 53,
+        'weight' => 66,
       ),
       'default' => array(
         'label' => 'inline',
@@ -6338,7 +6338,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 80,
+        'weight' => 92,
       ),
       'default' => array(
         'label' => 'inline',
@@ -6396,7 +6396,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 87,
+        'weight' => 97,
       ),
       'default' => array(
         'label' => 'inline',
@@ -6453,7 +6453,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 78,
+        'weight' => 90,
       ),
       'default' => array(
         'label' => 'inline',
@@ -6511,7 +6511,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 49,
+        'weight' => 62,
       ),
       'default' => array(
         'label' => 'inline',
@@ -6584,7 +6584,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 100,
+        'weight' => 110,
       ),
       'default' => array(
         'label' => 'inline',
@@ -6648,7 +6648,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 102,
+        'weight' => 112,
       ),
       'default' => array(
         'label' => 'inline',
@@ -6707,7 +6707,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 50,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -6766,7 +6766,7 @@ function oip_listing_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 90,
+        'weight' => 100,
       ),
       'default' => array(
         'label' => 'inline',
