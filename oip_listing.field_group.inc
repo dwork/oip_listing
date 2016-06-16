@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function oip_listing_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -50,7 +50,7 @@ function oip_listing_field_group_info() {
       ),
     ),
   );
-  $export['group_buildinginfo|node|listing|form'] = $field_group;
+  $field_groups['group_buildinginfo|node|listing|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -74,7 +74,7 @@ function oip_listing_field_group_info() {
       ),
     ),
   );
-  $export['group_coding|node|listing|default'] = $field_group;
+  $field_groups['group_coding|node|listing|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -112,7 +112,7 @@ function oip_listing_field_group_info() {
       ),
     ),
   );
-  $export['group_coding|node|listing|form'] = $field_group;
+  $field_groups['group_coding|node|listing|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -155,7 +155,7 @@ function oip_listing_field_group_info() {
       ),
     ),
   );
-  $export['group_features|node|listing|form'] = $field_group;
+  $field_groups['group_features|node|listing|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -189,7 +189,7 @@ function oip_listing_field_group_info() {
       ),
     ),
   );
-  $export['group_financing|node|listing|form'] = $field_group;
+  $field_groups['group_financing|node|listing|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -219,7 +219,7 @@ function oip_listing_field_group_info() {
       ),
     ),
   );
-  $export['group_landinfo|node|listing|form'] = $field_group;
+  $field_groups['group_landinfo|node|listing|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -252,7 +252,7 @@ function oip_listing_field_group_info() {
       ),
     ),
   );
-  $export['group_location|node|listing|form'] = $field_group;
+  $field_groups['group_location|node|listing|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -287,7 +287,7 @@ function oip_listing_field_group_info() {
       ),
     ),
   );
-  $export['group_neighborhood|node|listing|form'] = $field_group;
+  $field_groups['group_neighborhood|node|listing|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -318,7 +318,7 @@ function oip_listing_field_group_info() {
       ),
     ),
   );
-  $export['group_salesaids|node|listing|form'] = $field_group;
+  $field_groups['group_salesaids|node|listing|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -347,7 +347,19 @@ function oip_listing_field_group_info() {
       ),
     ),
   );
-  $export['group_soldinfo|node|listing|form'] = $field_group;
+  $field_groups['group_soldinfo|node|listing|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Coding');
+  t('Dwelling');
+  t('Features');
+  t('Financing');
+  t('Land Info');
+  t('Location');
+  t('Neighborhood');
+  t('Sales Aids');
+  t('Sold Info');
+
+  return $field_groups;
 }

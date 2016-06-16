@@ -10,1446 +10,7 @@
 function oip_listing_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-company-field_address'
-  $field_instances['node-company-field_address'] = array(
-    'bundle' => 'company',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Street Address',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_address',
-    'label' => 'Address 1',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_address2'
-  $field_instances['node-company-field_address2'] = array(
-    'bundle' => 'company',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_address2',
-    'label' => 'Address 2',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 8,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_agent_count'
-  $field_instances['node-company-field_agent_count'] = array(
-    'bundle' => 'company',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 17,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_agent_count',
-    'label' => 'Agent Count',
-    'required' => FALSE,
-    'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 19,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_city'
-  $field_instances['node-company-field_city'] = array(
-    'bundle' => 'company',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_city',
-    'label' => 'City',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 9,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_company_logo'
-  $field_instances['node-company-field_company_logo'] = array(
-    'bundle' => 'company',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 15,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_company_logo',
-    'label' => 'Company Logo',
-    'required' => 0,
-    'settings' => array(
-      'alt_field' => 0,
-      'default_image' => 0,
-      'file_directory' => '',
-      'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
-      'max_resolution' => '200x100',
-      'min_resolution' => '',
-      'title_field' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'image',
-      'settings' => array(
-        'preview_image_style' => 'thumbnail',
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'image_image',
-      'weight' => 16,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_companytype'
-  $field_instances['node-company-field_companytype'] = array(
-    'bundle' => 'company',
-    'default_value' => array(
-      0 => array(
-        'tid' => 16,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_companytype',
-    'label' => 'Company Type',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 0,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_contact'
-  $field_instances['node-company-field_contact'] = array(
-    'bundle' => 'company',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 14,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_contact',
-    'label' => 'Contact/Principal Broker',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 12,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_email'
-  $field_instances['node-company-field_email'] = array(
-    'bundle' => 'company',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Company email address',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'email',
-        'settings' => array(),
-        'type' => 'email_default',
-        'weight' => 13,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_email',
-    'label' => 'Company Email',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'email',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'email_textfield',
-      'weight' => 14,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_fax'
-  $field_instances['node-company-field_fax'] = array(
-    'bundle' => 'company',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'cck_phone',
-        'settings' => array(),
-        'type' => 'global_phone_number',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_fax',
-    'label' => 'Fax',
-    'required' => 0,
-    'settings' => array(
-      'all_country_codes' => 0,
-      'country_code_position' => 'before',
-      'country_codes' => array(
-        'country_selection' => array(
-          'ad' => 0,
-          'ae' => 0,
-          'af' => 0,
-          'ag' => 0,
-          'ai' => 0,
-          'al' => 0,
-          'am' => 0,
-          'an' => 0,
-          'ao' => 0,
-          'ar' => 0,
-          'as' => 0,
-          'at' => 0,
-          'au' => 0,
-          'aw' => 0,
-          'az' => 0,
-          'ba' => 0,
-          'bb' => 0,
-          'bd' => 0,
-          'be' => 0,
-          'bf' => 0,
-          'bg' => 0,
-          'bh' => 0,
-          'bi' => 0,
-          'bj' => 0,
-          'bm' => 0,
-          'bn' => 0,
-          'bo' => 0,
-          'br' => 0,
-          'bs' => 0,
-          'bt' => 0,
-          'bw' => 0,
-          'by' => 0,
-          'bz' => 0,
-          'ca' => 0,
-          'cc' => 0,
-          'cd' => 0,
-          'cf' => 0,
-          'cg' => 0,
-          'ch' => 0,
-          'ci' => 0,
-          'ck' => 0,
-          'cl' => 0,
-          'cm' => 0,
-          'cn' => 0,
-          'co' => 0,
-          'cr' => 0,
-          'cu' => 0,
-          'cv' => 0,
-          'cx' => 0,
-          'cy' => 0,
-          'cz' => 0,
-          'de' => 0,
-          'dj' => 0,
-          'dk' => 0,
-          'dm' => 0,
-          'do' => 0,
-          'dz' => 0,
-          'ec' => 0,
-          'ee' => 0,
-          'eg' => 0,
-          'er' => 0,
-          'es' => 0,
-          'et' => 0,
-          'fi' => 0,
-          'fj' => 0,
-          'fk' => 0,
-          'fm' => 0,
-          'fo' => 0,
-          'fr' => 0,
-          'ga' => 0,
-          'gb' => 0,
-          'gd' => 0,
-          'ge' => 0,
-          'gf' => 0,
-          'gh' => 0,
-          'gi' => 0,
-          'gl' => 0,
-          'gm' => 0,
-          'gn' => 0,
-          'gp' => 0,
-          'gq' => 0,
-          'gr' => 0,
-          'gt' => 0,
-          'gu' => 0,
-          'gw' => 0,
-          'gy' => 0,
-          'hk' => 0,
-          'hn' => 0,
-          'hr' => 0,
-          'ht' => 0,
-          'hu' => 0,
-          'id' => 0,
-          'ie' => 0,
-          'il' => 0,
-          'in' => 0,
-          'io' => 0,
-          'iq' => 0,
-          'ir' => 0,
-          'is' => 0,
-          'it' => 0,
-          'jm' => 0,
-          'jo' => 0,
-          'jp' => 0,
-          'ke' => 0,
-          'kg' => 0,
-          'kh' => 0,
-          'ki' => 0,
-          'km' => 0,
-          'kn' => 0,
-          'kp' => 0,
-          'kr' => 0,
-          'kw' => 0,
-          'ky' => 0,
-          'kz' => 0,
-          'la' => 0,
-          'lb' => 0,
-          'lc' => 0,
-          'li' => 0,
-          'lk' => 0,
-          'lr' => 0,
-          'ls' => 0,
-          'lt' => 0,
-          'lu' => 0,
-          'lv' => 0,
-          'ly' => 0,
-          'ma' => 0,
-          'mc' => 0,
-          'md' => 0,
-          'me' => 0,
-          'mg' => 0,
-          'mh' => 0,
-          'mk' => 0,
-          'ml' => 0,
-          'mm' => 0,
-          'mn' => 0,
-          'mo' => 0,
-          'mp' => 0,
-          'mq' => 0,
-          'mr' => 0,
-          'ms' => 0,
-          'mt' => 0,
-          'mu' => 0,
-          'mv' => 0,
-          'mw' => 0,
-          'mx' => 0,
-          'my' => 0,
-          'mz' => 0,
-          'na' => 0,
-          'nc' => 0,
-          'ne' => 0,
-          'nf' => 0,
-          'ng' => 0,
-          'ni' => 0,
-          'nl' => 0,
-          'no' => 0,
-          'np' => 0,
-          'nr' => 0,
-          'nu' => 0,
-          'nz' => 0,
-          'om' => 0,
-          'pa' => 0,
-          'pe' => 0,
-          'pf' => 0,
-          'pg' => 0,
-          'ph' => 0,
-          'pk' => 0,
-          'pl' => 0,
-          'pm' => 0,
-          'pr' => 0,
-          'ps' => 0,
-          'pt' => 0,
-          'pw' => 0,
-          'py' => 0,
-          'qa' => 0,
-          'ro' => 0,
-          'rs' => 0,
-          'ru' => 0,
-          'rw' => 0,
-          'sa' => 0,
-          'sb' => 0,
-          'sc' => 0,
-          'sd' => 0,
-          'se' => 0,
-          'sg' => 0,
-          'sh' => 0,
-          'si' => 0,
-          'sk' => 0,
-          'sl' => 0,
-          'sm' => 0,
-          'sn' => 0,
-          'so' => 0,
-          'sr' => 0,
-          'ss' => 0,
-          'st' => 0,
-          'sv' => 0,
-          'sy' => 0,
-          'sz' => 0,
-          'tc' => 0,
-          'td' => 0,
-          'tg' => 0,
-          'th' => 0,
-          'tj' => 0,
-          'tk' => 0,
-          'tm' => 0,
-          'tn' => 0,
-          'to' => 0,
-          'tp' => 0,
-          'tr' => 0,
-          'tt' => 0,
-          'tv' => 0,
-          'tw' => 0,
-          'tz' => 0,
-          'ua' => 0,
-          'ug' => 0,
-          'us' => 'us',
-          'uy' => 0,
-          'uz' => 0,
-          'va' => 0,
-          'vc' => 0,
-          've' => 0,
-          'vg' => 0,
-          'vi' => 0,
-          'vn' => 0,
-          'vu' => 0,
-          'wf' => 0,
-          'ws' => 0,
-          'ye' => 0,
-          'yt' => 0,
-          'za' => 0,
-          'zm' => 0,
-          'zw' => 0,
-        ),
-        'hide_single_cc' => 1,
-      ),
-      'default_country' => 'us',
-      'enable_country_level_validation' => 0,
-      'enable_default_country' => 1,
-      'enable_extension' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'cck_phone',
-      'settings' => array(
-        'size' => 15,
-      ),
-      'type' => 'phone_number',
-      'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_listingstatus'
-  $field_instances['node-company-field_listingstatus'] = array(
-    'bundle' => 'company',
-    'default_value' => array(
-      0 => array(
-        'value' => 'ACT',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Determines whether or not listings are downloaded using BSF. All agencies are set up with BSF, BSS (Sold) and BSP (Pending) credentials',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 18,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_listingstatus',
-    'label' => 'Listing Status',
-    'readmore_behaviour' => 'default',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 20,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_mls_type'
-  $field_instances['node-company-field_mls_type'] = array(
-    'bundle' => 'company',
-    'default_value' => array(
-      0 => array(
-        'tid' => 25,
-      ),
-      1 => array(
-        'tid' => 27,
-      ),
-      2 => array(
-        'tid' => 26,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Select the MLS Type/Types downloaded for this company. This field is checked on the RMLS agreement when they give permission to OIP to download data via BSF',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 16,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_mls_type',
-    'label' => 'MLS Type',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 18,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_offid'
-  $field_instances['node-company-field_offid'] = array(
-    'bundle' => 'company',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_offid',
-    'label' => 'Listing Office ID',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 15,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_phone'
-  $field_instances['node-company-field_phone'] = array(
-    'bundle' => 'company',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'cck_phone',
-        'settings' => array(),
-        'type' => 'global_phone_number',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_phone',
-    'label' => 'Phone',
-    'required' => 0,
-    'settings' => array(
-      'all_country_codes' => 0,
-      'country_code_position' => 'before',
-      'country_codes' => array(
-        'country_selection' => array(
-          'ad' => 0,
-          'ae' => 0,
-          'af' => 0,
-          'ag' => 0,
-          'ai' => 0,
-          'al' => 0,
-          'am' => 0,
-          'an' => 0,
-          'ao' => 0,
-          'ar' => 0,
-          'as' => 0,
-          'at' => 0,
-          'au' => 0,
-          'aw' => 0,
-          'az' => 0,
-          'ba' => 0,
-          'bb' => 0,
-          'bd' => 0,
-          'be' => 0,
-          'bf' => 0,
-          'bg' => 0,
-          'bh' => 0,
-          'bi' => 0,
-          'bj' => 0,
-          'bm' => 0,
-          'bn' => 0,
-          'bo' => 0,
-          'br' => 0,
-          'bs' => 0,
-          'bt' => 0,
-          'bw' => 0,
-          'by' => 0,
-          'bz' => 0,
-          'ca' => 0,
-          'cc' => 0,
-          'cd' => 0,
-          'cf' => 0,
-          'cg' => 0,
-          'ch' => 0,
-          'ci' => 0,
-          'ck' => 0,
-          'cl' => 0,
-          'cm' => 0,
-          'cn' => 0,
-          'co' => 0,
-          'cr' => 0,
-          'cu' => 0,
-          'cv' => 0,
-          'cx' => 0,
-          'cy' => 0,
-          'cz' => 0,
-          'de' => 0,
-          'dj' => 0,
-          'dk' => 0,
-          'dm' => 0,
-          'do' => 0,
-          'dz' => 0,
-          'ec' => 0,
-          'ee' => 0,
-          'eg' => 0,
-          'er' => 0,
-          'es' => 0,
-          'et' => 0,
-          'fi' => 0,
-          'fj' => 0,
-          'fk' => 0,
-          'fm' => 0,
-          'fo' => 0,
-          'fr' => 0,
-          'ga' => 0,
-          'gb' => 0,
-          'gd' => 0,
-          'ge' => 0,
-          'gf' => 0,
-          'gh' => 0,
-          'gi' => 0,
-          'gl' => 0,
-          'gm' => 0,
-          'gn' => 0,
-          'gp' => 0,
-          'gq' => 0,
-          'gr' => 0,
-          'gt' => 0,
-          'gu' => 0,
-          'gw' => 0,
-          'gy' => 0,
-          'hk' => 0,
-          'hn' => 0,
-          'hr' => 0,
-          'ht' => 0,
-          'hu' => 0,
-          'id' => 0,
-          'ie' => 0,
-          'il' => 0,
-          'in' => 0,
-          'io' => 0,
-          'iq' => 0,
-          'ir' => 0,
-          'is' => 0,
-          'it' => 0,
-          'jm' => 0,
-          'jo' => 0,
-          'jp' => 0,
-          'ke' => 0,
-          'kg' => 0,
-          'kh' => 0,
-          'ki' => 0,
-          'km' => 0,
-          'kn' => 0,
-          'kp' => 0,
-          'kr' => 0,
-          'kw' => 0,
-          'ky' => 0,
-          'kz' => 0,
-          'la' => 0,
-          'lb' => 0,
-          'lc' => 0,
-          'li' => 0,
-          'lk' => 0,
-          'lr' => 0,
-          'ls' => 0,
-          'lt' => 0,
-          'lu' => 0,
-          'lv' => 0,
-          'ly' => 0,
-          'ma' => 0,
-          'mc' => 0,
-          'md' => 0,
-          'me' => 0,
-          'mg' => 0,
-          'mh' => 0,
-          'mk' => 0,
-          'ml' => 0,
-          'mm' => 0,
-          'mn' => 0,
-          'mo' => 0,
-          'mp' => 0,
-          'mq' => 0,
-          'mr' => 0,
-          'ms' => 0,
-          'mt' => 0,
-          'mu' => 0,
-          'mv' => 0,
-          'mw' => 0,
-          'mx' => 0,
-          'my' => 0,
-          'mz' => 0,
-          'na' => 0,
-          'nc' => 0,
-          'ne' => 0,
-          'nf' => 0,
-          'ng' => 0,
-          'ni' => 0,
-          'nl' => 0,
-          'no' => 0,
-          'np' => 0,
-          'nr' => 0,
-          'nu' => 0,
-          'nz' => 0,
-          'om' => 0,
-          'pa' => 0,
-          'pe' => 0,
-          'pf' => 0,
-          'pg' => 0,
-          'ph' => 0,
-          'pk' => 0,
-          'pl' => 0,
-          'pm' => 0,
-          'pr' => 0,
-          'ps' => 0,
-          'pt' => 0,
-          'pw' => 0,
-          'py' => 0,
-          'qa' => 0,
-          'ro' => 0,
-          'rs' => 0,
-          'ru' => 0,
-          'rw' => 0,
-          'sa' => 0,
-          'sb' => 0,
-          'sc' => 0,
-          'sd' => 0,
-          'se' => 0,
-          'sg' => 0,
-          'sh' => 0,
-          'si' => 0,
-          'sk' => 0,
-          'sl' => 0,
-          'sm' => 0,
-          'sn' => 0,
-          'so' => 0,
-          'sr' => 0,
-          'ss' => 0,
-          'st' => 0,
-          'sv' => 0,
-          'sy' => 0,
-          'sz' => 0,
-          'tc' => 0,
-          'td' => 0,
-          'tg' => 0,
-          'th' => 0,
-          'tj' => 0,
-          'tk' => 0,
-          'tm' => 0,
-          'tn' => 0,
-          'to' => 0,
-          'tp' => 0,
-          'tr' => 0,
-          'tt' => 0,
-          'tv' => 0,
-          'tw' => 0,
-          'tz' => 0,
-          'ua' => 0,
-          'ug' => 0,
-          'us' => 'us',
-          'uy' => 0,
-          'uz' => 0,
-          'va' => 0,
-          'vc' => 0,
-          've' => 0,
-          'vg' => 0,
-          'vi' => 0,
-          'vn' => 0,
-          'vu' => 0,
-          'wf' => 0,
-          'ws' => 0,
-          'ye' => 0,
-          'yt' => 0,
-          'za' => 0,
-          'zm' => 0,
-          'zw' => 0,
-        ),
-        'hide_single_cc' => 1,
-      ),
-      'default_country' => 'us',
-      'enable_country_level_validation' => 0,
-      'enable_default_country' => 1,
-      'enable_extension' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'cck_phone',
-      'settings' => array(
-        'size' => 15,
-      ),
-      'type' => 'phone_number',
-      'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_state'
-  $field_instances['node-company-field_state'] = array(
-    'bundle' => 'company',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 8,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_state',
-    'label' => 'State',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 3,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_tollfree'
-  $field_instances['node-company-field_tollfree'] = array(
-    'bundle' => 'company',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'cck_phone',
-        'settings' => array(),
-        'type' => 'global_phone_number',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_tollfree',
-    'label' => 'Toll Free',
-    'required' => 0,
-    'settings' => array(
-      'all_country_codes' => 0,
-      'country_code_position' => 'before',
-      'country_codes' => array(
-        'country_selection' => array(
-          'ad' => 0,
-          'ae' => 0,
-          'af' => 0,
-          'ag' => 0,
-          'ai' => 0,
-          'al' => 0,
-          'am' => 0,
-          'an' => 0,
-          'ao' => 0,
-          'ar' => 0,
-          'as' => 0,
-          'at' => 0,
-          'au' => 0,
-          'aw' => 0,
-          'az' => 0,
-          'ba' => 0,
-          'bb' => 0,
-          'bd' => 0,
-          'be' => 0,
-          'bf' => 0,
-          'bg' => 0,
-          'bh' => 0,
-          'bi' => 0,
-          'bj' => 0,
-          'bm' => 0,
-          'bn' => 0,
-          'bo' => 0,
-          'br' => 0,
-          'bs' => 0,
-          'bt' => 0,
-          'bw' => 0,
-          'by' => 0,
-          'bz' => 0,
-          'ca' => 0,
-          'cc' => 0,
-          'cd' => 0,
-          'cf' => 0,
-          'cg' => 0,
-          'ch' => 0,
-          'ci' => 0,
-          'ck' => 0,
-          'cl' => 0,
-          'cm' => 0,
-          'cn' => 0,
-          'co' => 0,
-          'cr' => 0,
-          'cu' => 0,
-          'cv' => 0,
-          'cx' => 0,
-          'cy' => 0,
-          'cz' => 0,
-          'de' => 0,
-          'dj' => 0,
-          'dk' => 0,
-          'dm' => 0,
-          'do' => 0,
-          'dz' => 0,
-          'ec' => 0,
-          'ee' => 0,
-          'eg' => 0,
-          'er' => 0,
-          'es' => 0,
-          'et' => 0,
-          'fi' => 0,
-          'fj' => 0,
-          'fk' => 0,
-          'fm' => 0,
-          'fo' => 0,
-          'fr' => 0,
-          'ga' => 0,
-          'gb' => 0,
-          'gd' => 0,
-          'ge' => 0,
-          'gf' => 0,
-          'gh' => 0,
-          'gi' => 0,
-          'gl' => 0,
-          'gm' => 0,
-          'gn' => 0,
-          'gp' => 0,
-          'gq' => 0,
-          'gr' => 0,
-          'gt' => 0,
-          'gu' => 0,
-          'gw' => 0,
-          'gy' => 0,
-          'hk' => 0,
-          'hn' => 0,
-          'hr' => 0,
-          'ht' => 0,
-          'hu' => 0,
-          'id' => 0,
-          'ie' => 0,
-          'il' => 0,
-          'in' => 0,
-          'io' => 0,
-          'iq' => 0,
-          'ir' => 0,
-          'is' => 0,
-          'it' => 0,
-          'jm' => 0,
-          'jo' => 0,
-          'jp' => 0,
-          'ke' => 0,
-          'kg' => 0,
-          'kh' => 0,
-          'ki' => 0,
-          'km' => 0,
-          'kn' => 0,
-          'kp' => 0,
-          'kr' => 0,
-          'kw' => 0,
-          'ky' => 0,
-          'kz' => 0,
-          'la' => 0,
-          'lb' => 0,
-          'lc' => 0,
-          'li' => 0,
-          'lk' => 0,
-          'lr' => 0,
-          'ls' => 0,
-          'lt' => 0,
-          'lu' => 0,
-          'lv' => 0,
-          'ly' => 0,
-          'ma' => 0,
-          'mc' => 0,
-          'md' => 0,
-          'me' => 0,
-          'mg' => 0,
-          'mh' => 0,
-          'mk' => 0,
-          'ml' => 0,
-          'mm' => 0,
-          'mn' => 0,
-          'mo' => 0,
-          'mp' => 0,
-          'mq' => 0,
-          'mr' => 0,
-          'ms' => 0,
-          'mt' => 0,
-          'mu' => 0,
-          'mv' => 0,
-          'mw' => 0,
-          'mx' => 0,
-          'my' => 0,
-          'mz' => 0,
-          'na' => 0,
-          'nc' => 0,
-          'ne' => 0,
-          'nf' => 0,
-          'ng' => 0,
-          'ni' => 0,
-          'nl' => 0,
-          'no' => 0,
-          'np' => 0,
-          'nr' => 0,
-          'nu' => 0,
-          'nz' => 0,
-          'om' => 0,
-          'pa' => 0,
-          'pe' => 0,
-          'pf' => 0,
-          'pg' => 0,
-          'ph' => 0,
-          'pk' => 0,
-          'pl' => 0,
-          'pm' => 0,
-          'pr' => 0,
-          'ps' => 0,
-          'pt' => 0,
-          'pw' => 0,
-          'py' => 0,
-          'qa' => 0,
-          'ro' => 0,
-          'rs' => 0,
-          'ru' => 0,
-          'rw' => 0,
-          'sa' => 0,
-          'sb' => 0,
-          'sc' => 0,
-          'sd' => 0,
-          'se' => 0,
-          'sg' => 0,
-          'sh' => 0,
-          'si' => 0,
-          'sk' => 0,
-          'sl' => 0,
-          'sm' => 0,
-          'sn' => 0,
-          'so' => 0,
-          'sr' => 0,
-          'ss' => 0,
-          'st' => 0,
-          'sv' => 0,
-          'sy' => 0,
-          'sz' => 0,
-          'tc' => 0,
-          'td' => 0,
-          'tg' => 0,
-          'th' => 0,
-          'tj' => 0,
-          'tk' => 0,
-          'tm' => 0,
-          'tn' => 0,
-          'to' => 0,
-          'tp' => 0,
-          'tr' => 0,
-          'tt' => 0,
-          'tv' => 0,
-          'tw' => 0,
-          'tz' => 0,
-          'ua' => 0,
-          'ug' => 0,
-          'us' => 'us',
-          'uy' => 0,
-          'uz' => 0,
-          'va' => 0,
-          'vc' => 0,
-          've' => 0,
-          'vg' => 0,
-          'vi' => 0,
-          'vn' => 0,
-          'vu' => 0,
-          'wf' => 0,
-          'ws' => 0,
-          'ye' => 0,
-          'yt' => 0,
-          'za' => 0,
-          'zm' => 0,
-          'zw' => 0,
-        ),
-        'hide_single_cc' => 1,
-      ),
-      'default_country' => 'us',
-      'enable_country_level_validation' => 0,
-      'enable_default_country' => 1,
-      'enable_extension' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'cck_phone',
-      'settings' => array(
-        'size' => 15,
-      ),
-      'type' => 'phone_number',
-      'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_website'
-  $field_instances['node-company-field_website'] = array(
-    'bundle' => 'company',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Company website - enter the full URL (e.g. http://www.yourcompanyname.com)',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 12,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_website',
-    'label' => 'Company Website',
-    'required' => 0,
-    'settings' => array(
-      'absolute_url' => 1,
-      'attributes' => array(
-        'class' => '',
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'title' => 'optional',
-      'title_label_use_field_label' => FALSE,
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 1,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
-      'weight' => 13,
-    ),
-  );
-
-  // Exported field_instance: 'node-company-field_zipcode'
-  $field_instances['node-company-field_zipcode'] = array(
-    'bundle' => 'company',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 9,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_zipcode',
-    'label' => 'Zip Code',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 10,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'node-documentation-body'
+  // Exported field_instance: 'node-documentation-body'.
   $field_instances['node-documentation-body'] = array(
     'bundle' => 'documentation',
     'default_value' => NULL,
@@ -1493,7 +54,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hotsheet-body'
+  // Exported field_instance: 'node-hotsheet-body'.
   $field_instances['node-hotsheet-body'] = array(
     'bundle' => 'hotsheet',
     'default_value' => NULL,
@@ -1539,7 +100,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-body'
+  // Exported field_instance: 'node-listing-body'.
   $field_instances['node-listing-body'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -1608,7 +169,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_accessibility'
+  // Exported field_instance: 'node-listing-field_accessibility'.
   $field_instances['node-listing-field_accessibility'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -1672,7 +233,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_acreage'
+  // Exported field_instance: 'node-listing-field_acreage'.
   $field_instances['node-listing-field_acreage'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -1742,7 +303,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_address'
+  // Exported field_instance: 'node-listing-field_address'.
   $field_instances['node-listing-field_address'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -1806,7 +367,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_adtitle'
+  // Exported field_instance: 'node-listing-field_adtitle'.
   $field_instances['node-listing-field_adtitle'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -1870,7 +431,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_appliances'
+  // Exported field_instance: 'node-listing-field_appliances'.
   $field_instances['node-listing-field_appliances'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -1934,7 +495,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_area'
+  // Exported field_instance: 'node-listing-field_area'.
   $field_instances['node-listing-field_area'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -1998,7 +559,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_basement'
+  // Exported field_instance: 'node-listing-field_basement'.
   $field_instances['node-listing-field_basement'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -2062,7 +623,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_baths'
+  // Exported field_instance: 'node-listing-field_baths'.
   $field_instances['node-listing-field_baths'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -2132,7 +693,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_beds'
+  // Exported field_instance: 'node-listing-field_beds'.
   $field_instances['node-listing-field_beds'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -2202,7 +763,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_city'
+  // Exported field_instance: 'node-listing-field_city'.
   $field_instances['node-listing-field_city'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -2267,7 +828,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_colistingagentid'
+  // Exported field_instance: 'node-listing-field_colistingagentid'.
   $field_instances['node-listing-field_colistingagentid'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -2331,7 +892,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_construction'
+  // Exported field_instance: 'node-listing-field_construction'.
   $field_instances['node-listing-field_construction'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -2395,7 +956,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_contour'
+  // Exported field_instance: 'node-listing-field_contour'.
   $field_instances['node-listing-field_contour'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -2452,7 +1013,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_cooling'
+  // Exported field_instance: 'node-listing-field_cooling'.
   $field_instances['node-listing-field_cooling'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -2516,7 +1077,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_county'
+  // Exported field_instance: 'node-listing-field_county'.
   $field_instances['node-listing-field_county'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -2580,7 +1141,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_diningroom'
+  // Exported field_instance: 'node-listing-field_diningroom'.
   $field_instances['node-listing-field_diningroom'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -2644,7 +1205,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_directions'
+  // Exported field_instance: 'node-listing-field_directions'.
   $field_instances['node-listing-field_directions'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -2708,7 +1269,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_expiredate'
+  // Exported field_instance: 'node-listing-field_expiredate'.
   $field_instances['node-listing-field_expiredate'] = array(
     'bundle' => 'listing',
     'deleted' => 0,
@@ -2779,7 +1340,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_exterior'
+  // Exported field_instance: 'node-listing-field_exterior'.
   $field_instances['node-listing-field_exterior'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -2843,7 +1404,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_exteriordescription'
+  // Exported field_instance: 'node-listing-field_exteriordescription'.
   $field_instances['node-listing-field_exteriordescription'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -2907,7 +1468,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_familyroom'
+  // Exported field_instance: 'node-listing-field_familyroom'.
   $field_instances['node-listing-field_familyroom'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -2971,7 +1532,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_fireplacedesc'
+  // Exported field_instance: 'node-listing-field_fireplacedesc'.
   $field_instances['node-listing-field_fireplacedesc'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -3035,7 +1596,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_fireplaces'
+  // Exported field_instance: 'node-listing-field_fireplaces'.
   $field_instances['node-listing-field_fireplaces'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -3105,7 +1666,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_flyer'
+  // Exported field_instance: 'node-listing-field_flyer'.
   $field_instances['node-listing-field_flyer'] = array(
     'bundle' => 'listing',
     'default_value' => array(
@@ -3165,7 +1726,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_fuel'
+  // Exported field_instance: 'node-listing-field_fuel'.
   $field_instances['node-listing-field_fuel'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -3229,7 +1790,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_garagespaces'
+  // Exported field_instance: 'node-listing-field_garagespaces'.
   $field_instances['node-listing-field_garagespaces'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -3299,7 +1860,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_garagetype'
+  // Exported field_instance: 'node-listing-field_garagetype'.
   $field_instances['node-listing-field_garagetype'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -3363,7 +1924,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_geodata'
+  // Exported field_instance: 'node-listing-field_geodata'.
   $field_instances['node-listing-field_geodata'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -3430,7 +1991,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_heat'
+  // Exported field_instance: 'node-listing-field_heat'.
   $field_instances['node-listing-field_heat'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -3494,7 +2055,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_hotwater'
+  // Exported field_instance: 'node-listing-field_hotwater'.
   $field_instances['node-listing-field_hotwater'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -3558,7 +2119,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_interior'
+  // Exported field_instance: 'node-listing-field_interior'.
   $field_instances['node-listing-field_interior'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -3622,7 +2183,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_internetaddress'
+  // Exported field_instance: 'node-listing-field_internetaddress'.
   $field_instances['node-listing-field_internetaddress'] = array(
     'bundle' => 'listing',
     'default_value' => array(
@@ -3686,7 +2247,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_levels'
+  // Exported field_instance: 'node-listing-field_levels'.
   $field_instances['node-listing-field_levels'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -3756,7 +2317,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_listdate'
+  // Exported field_instance: 'node-listing-field_listdate'.
   $field_instances['node-listing-field_listdate'] = array(
     'bundle' => 'listing',
     'deleted' => 0,
@@ -3827,7 +2388,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_listingagentid'
+  // Exported field_instance: 'node-listing-field_listingagentid'.
   $field_instances['node-listing-field_listingagentid'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -3891,7 +2452,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_listprice'
+  // Exported field_instance: 'node-listing-field_listprice'.
   $field_instances['node-listing-field_listprice'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -3961,7 +2522,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_livingroom'
+  // Exported field_instance: 'node-listing-field_livingroom'.
   $field_instances['node-listing-field_livingroom'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -4025,7 +2586,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_lotsize'
+  // Exported field_instance: 'node-listing-field_lotsize'.
   $field_instances['node-listing-field_lotsize'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -4089,7 +2650,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_maxprice'
+  // Exported field_instance: 'node-listing-field_maxprice'.
   $field_instances['node-listing-field_maxprice'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -4159,7 +2720,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_minprice'
+  // Exported field_instance: 'node-listing-field_minprice'.
   $field_instances['node-listing-field_minprice'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -4229,7 +2790,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_mlsno'
+  // Exported field_instance: 'node-listing-field_mlsno'.
   $field_instances['node-listing-field_mlsno'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -4293,7 +2854,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_neighborhood'
+  // Exported field_instance: 'node-listing-field_neighborhood'.
   $field_instances['node-listing-field_neighborhood'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -4357,7 +2918,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_numberlots'
+  // Exported field_instance: 'node-listing-field_numberlots'.
   $field_instances['node-listing-field_numberlots'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -4427,7 +2988,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_numberunits'
+  // Exported field_instance: 'node-listing-field_numberunits'.
   $field_instances['node-listing-field_numberunits'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -4497,7 +3058,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_offid'
+  // Exported field_instance: 'node-listing-field_offid'.
   $field_instances['node-listing-field_offid'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -4561,7 +3122,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_offmarketdate'
+  // Exported field_instance: 'node-listing-field_offmarketdate'.
   $field_instances['node-listing-field_offmarketdate'] = array(
     'bundle' => 'listing',
     'deleted' => 0,
@@ -4634,7 +3195,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_originaladtitle'
+  // Exported field_instance: 'node-listing-field_originaladtitle'.
   $field_instances['node-listing-field_originaladtitle'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -4698,7 +3259,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_originaldescription'
+  // Exported field_instance: 'node-listing-field_originaldescription'.
   $field_instances['node-listing-field_originaldescription'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -4762,7 +3323,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_photos'
+  // Exported field_instance: 'node-listing-field_photos'.
   $field_instances['node-listing-field_photos'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -4820,7 +3381,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_present_use'
+  // Exported field_instance: 'node-listing-field_present_use'.
   $field_instances['node-listing-field_present_use'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -4883,7 +3444,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_pricetype'
+  // Exported field_instance: 'node-listing-field_pricetype'.
   $field_instances['node-listing-field_pricetype'] = array(
     'bundle' => 'listing',
     'default_value' => array(
@@ -4948,7 +3509,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_propertytype'
+  // Exported field_instance: 'node-listing-field_propertytype'.
   $field_instances['node-listing-field_propertytype'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -5011,7 +3572,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_proptype'
+  // Exported field_instance: 'node-listing-field_proptype'.
   $field_instances['node-listing-field_proptype'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -5070,7 +3631,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_roof'
+  // Exported field_instance: 'node-listing-field_roof'.
   $field_instances['node-listing-field_roof'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -5134,7 +3695,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_rotatelisting'
+  // Exported field_instance: 'node-listing-field_rotatelisting'.
   $field_instances['node-listing-field_rotatelisting'] = array(
     'bundle' => 'listing',
     'default_value' => array(
@@ -5192,7 +3753,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_saleagentid'
+  // Exported field_instance: 'node-listing-field_saleagentid'.
   $field_instances['node-listing-field_saleagentid'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -5256,7 +3817,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_schoole'
+  // Exported field_instance: 'node-listing-field_schoole'.
   $field_instances['node-listing-field_schoole'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -5320,7 +3881,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_schoolh'
+  // Exported field_instance: 'node-listing-field_schoolh'.
   $field_instances['node-listing-field_schoolh'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -5384,7 +3945,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_schoolj'
+  // Exported field_instance: 'node-listing-field_schoolj'.
   $field_instances['node-listing-field_schoolj'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -5448,7 +4009,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_sewer'
+  // Exported field_instance: 'node-listing-field_sewer'.
   $field_instances['node-listing-field_sewer'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -5511,7 +4072,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_shortsale'
+  // Exported field_instance: 'node-listing-field_shortsale'.
   $field_instances['node-listing-field_shortsale'] = array(
     'bundle' => 'listing',
     'default_value' => array(
@@ -5576,7 +4137,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_slideshow'
+  // Exported field_instance: 'node-listing-field_slideshow'.
   $field_instances['node-listing-field_slideshow'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -5655,7 +4216,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_solddate'
+  // Exported field_instance: 'node-listing-field_solddate'.
   $field_instances['node-listing-field_solddate'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -5737,7 +4298,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_soldprice'
+  // Exported field_instance: 'node-listing-field_soldprice'.
   $field_instances['node-listing-field_soldprice'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -5807,7 +4368,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_soldterms'
+  // Exported field_instance: 'node-listing-field_soldterms'.
   $field_instances['node-listing-field_soldterms'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -5871,7 +4432,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_source'
+  // Exported field_instance: 'node-listing-field_source'.
   $field_instances['node-listing-field_source'] = array(
     'bundle' => 'listing',
     'default_value' => array(
@@ -5936,7 +4497,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_sqft'
+  // Exported field_instance: 'node-listing-field_sqft'.
   $field_instances['node-listing-field_sqft'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -6006,7 +4567,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_state'
+  // Exported field_instance: 'node-listing-field_state'.
   $field_instances['node-listing-field_state'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -6070,7 +4631,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_status'
+  // Exported field_instance: 'node-listing-field_status'.
   $field_instances['node-listing-field_status'] = array(
     'bundle' => 'listing',
     'default_value' => array(
@@ -6136,7 +4697,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_structures'
+  // Exported field_instance: 'node-listing-field_structures'.
   $field_instances['node-listing-field_structures'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -6200,7 +4761,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_style'
+  // Exported field_instance: 'node-listing-field_style'.
   $field_instances['node-listing-field_style'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -6264,7 +4825,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_subdivision'
+  // Exported field_instance: 'node-listing-field_subdivision'.
   $field_instances['node-listing-field_subdivision'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -6328,7 +4889,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_taxes'
+  // Exported field_instance: 'node-listing-field_taxes'.
   $field_instances['node-listing-field_taxes'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -6398,7 +4959,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_taxid'
+  // Exported field_instance: 'node-listing-field_taxid'.
   $field_instances['node-listing-field_taxid'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -6462,7 +5023,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_terms'
+  // Exported field_instance: 'node-listing-field_terms'.
   $field_instances['node-listing-field_terms'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -6526,7 +5087,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_utilities'
+  // Exported field_instance: 'node-listing-field_utilities'.
   $field_instances['node-listing-field_utilities'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -6589,7 +5150,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_videotour'
+  // Exported field_instance: 'node-listing-field_videotour'.
   $field_instances['node-listing-field_videotour'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -6668,7 +5229,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_view'
+  // Exported field_instance: 'node-listing-field_view'.
   $field_instances['node-listing-field_view'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -6732,7 +5293,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_virtualtour'
+  // Exported field_instance: 'node-listing-field_virtualtour'.
   $field_instances['node-listing-field_virtualtour'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -6811,7 +5372,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_water'
+  // Exported field_instance: 'node-listing-field_water'.
   $field_instances['node-listing-field_water'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -6875,7 +5436,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_waterfront'
+  // Exported field_instance: 'node-listing-field_waterfront'.
   $field_instances['node-listing-field_waterfront'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -6938,7 +5499,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_waterfrontname'
+  // Exported field_instance: 'node-listing-field_waterfrontname'.
   $field_instances['node-listing-field_waterfrontname'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -7002,7 +5563,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_website'
+  // Exported field_instance: 'node-listing-field_website'.
   $field_instances['node-listing-field_website'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -7081,7 +5642,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_yearbuilt'
+  // Exported field_instance: 'node-listing-field_yearbuilt'.
   $field_instances['node-listing-field_yearbuilt'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -7151,7 +5712,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_yearbuiltmod'
+  // Exported field_instance: 'node-listing-field_yearbuiltmod'.
   $field_instances['node-listing-field_yearbuiltmod'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -7216,7 +5777,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_zipcode'
+  // Exported field_instance: 'node-listing-field_zipcode'.
   $field_instances['node-listing-field_zipcode'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -7281,7 +5842,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing-field_zoning'
+  // Exported field_instance: 'node-listing-field_zoning'.
   $field_instances['node-listing-field_zoning'] = array(
     'bundle' => 'listing',
     'default_value' => NULL,
@@ -7344,7 +5905,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing_statistics-field_date'
+  // Exported field_instance: 'node-listing_statistics-field_date'.
   $field_instances['node-listing_statistics-field_date'] = array(
     'bundle' => 'listing_statistics',
     'deleted' => 0,
@@ -7398,7 +5959,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing_statistics-field_referrer'
+  // Exported field_instance: 'node-listing_statistics-field_referrer'.
   $field_instances['node-listing_statistics-field_referrer'] = array(
     'bundle' => 'listing_statistics',
     'default_value' => NULL,
@@ -7439,7 +6000,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing_statistics-field_view_type'
+  // Exported field_instance: 'node-listing_statistics-field_view_type'.
   $field_instances['node-listing_statistics-field_view_type'] = array(
     'bundle' => 'listing_statistics',
     'default_value' => NULL,
@@ -7477,7 +6038,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-open_house-body'
+  // Exported field_instance: 'node-open_house-body'.
   $field_instances['node-open_house-body'] = array(
     'bundle' => 'open_house',
     'default_value' => NULL,
@@ -7521,7 +6082,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-open_house-field_foodserved'
+  // Exported field_instance: 'node-open_house-field_foodserved'.
   $field_instances['node-open_house-field_foodserved'] = array(
     'bundle' => 'open_house',
     'default_value' => NULL,
@@ -7561,7 +6122,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-open_house-field_listing'
+  // Exported field_instance: 'node-open_house-field_listing'.
   $field_instances['node-open_house-field_listing'] = array(
     'bundle' => 'open_house',
     'default_value' => NULL,
@@ -7602,7 +6163,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-open_house-field_mlsno'
+  // Exported field_instance: 'node-open_house-field_mlsno'.
   $field_instances['node-open_house-field_mlsno'] = array(
     'bundle' => 'open_house',
     'default_value' => NULL,
@@ -7642,7 +6203,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-open_house-field_openhousedate'
+  // Exported field_instance: 'node-open_house-field_openhousedate'.
   $field_instances['node-open_house-field_openhousedate'] = array(
     'bundle' => 'open_house',
     'default_value' => NULL,
@@ -7699,7 +6260,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-open_house-field_openhousetime'
+  // Exported field_instance: 'node-open_house-field_openhousetime'.
   $field_instances['node-open_house-field_openhousetime'] = array(
     'bundle' => 'open_house',
     'default_value' => NULL,
@@ -7739,7 +6300,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-flyers-field_flyer_image'
+  // Exported field_instance: 'taxonomy_term-flyers-field_flyer_image'.
   $field_instances['taxonomy_term-flyers-field_flyer_image'] = array(
     'bundle' => 'flyers',
     'deleted' => 0,
@@ -7783,7 +6344,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-flyers-field_flyer_label'
+  // Exported field_instance: 'taxonomy_term-flyers-field_flyer_label'.
   $field_instances['taxonomy_term-flyers-field_flyer_label'] = array(
     'bundle' => 'flyers',
     'default_value' => NULL,
@@ -7817,7 +6378,7 @@ function oip_listing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-flyers-field_required_images'
+  // Exported field_instance: 'taxonomy_term-flyers-field_required_images'.
   $field_instances['taxonomy_term-flyers-field_required_images'] = array(
     'bundle' => 'flyers',
     'default_value' => NULL,
@@ -7865,9 +6426,6 @@ function oip_listing_field_default_field_instances() {
   t('Acreage');
   t('Actual sales price regardless of commissions or other seller terms');
   t('Ad Title Override');
-  t('Address 1');
-  t('Address 2');
-  t('Agent Count');
   t('Annual property tax amount');
   t('Area');
   t('Available utilities, such as city water & sewer, electricity, cable TV, DSL, etc.');
@@ -7879,14 +6437,7 @@ function oip_listing_field_default_field_instances() {
   t('Building square footage. For Residential properties, this is usually "habitable" square footage, so garage sqft and unfinished basement sqft would normally be omitted.');
   t('City');
   t('CoListing Agent');
-  t('Company Email');
-  t('Company Logo');
-  t('Company Type');
-  t('Company Website');
-  t('Company email address');
-  t('Company website - enter the full URL (e.g. http://www.yourcompanyname.com)');
   t('Construction');
-  t('Contact/Principal Broker');
   t('Contour');
   t('Contour of the land (rolling hills, flat, etc.)');
   t('Cooling');
@@ -7904,7 +6455,6 @@ function oip_listing_field_default_field_instances() {
   t('Description of the dwelling exterior');
   t('Description of water source (e.g. Public, Well, etc.)');
   t('Descriptive Lot Size (e.g. 100 x 100, or Irregular)');
-  t('Determines whether or not listings are downloaded using BSF. All agencies are set up with BSF, BSS (Sold) and BSP (Pending) credentials');
   t('Dining Room');
   t('Dining Room features');
   t('Directions');
@@ -7920,7 +6470,6 @@ function oip_listing_field_default_field_instances() {
   t('Exterior features');
   t('Family Room');
   t('Family Room features');
-  t('Fax');
   t('Fireplace Description');
   t('Fireplaces');
   t('Flyer Image/Sample');
@@ -7954,13 +6503,11 @@ function oip_listing_field_default_field_instances() {
   t('Listing');
   t('Listing Agent ID');
   t('Listing Office ID');
-  t('Listing Status');
   t('Living Room');
   t('Living Room features');
   t('Lot Size');
   t('Lot size in acres; this is a searchable field, so it is required. Calculate acres by taking sqft (e.g. 100 x 100 = 1,000 sqft) divided by 43,560 = .02 acres');
   t('MLS #');
-  t('MLS Type');
   t('MLS#');
   t('Maximum Price');
   t('Middle School');
@@ -7979,7 +6526,6 @@ function oip_listing_field_default_field_instances() {
   t('Open House Times');
   t('Original Ad Title');
   t('Original Description');
-  t('Phone');
   t('Photos');
   t('Present Use');
   t('Present use applies mainly to commercial buildings (e.g. Gas Station, Restaurant), although residential property listings could have "Rental" or "Vacant".');
@@ -7994,7 +6540,6 @@ function oip_listing_field_default_field_instances() {
   t('Roof type and description');
   t('Rotate');
   t('Sale terms, e.g. "Cash, Conventional, FHA"');
-  t('Select the MLS Type/Types downloaded for this company. This field is checked on the RMLS agreement when they give permission to OIP to download data via BSF');
   t('Selling Agent ID');
   t('Sewer');
   t('Short Sale');
@@ -8020,7 +6565,6 @@ function oip_listing_field_default_field_instances() {
   t('This is an example image of this Flyer Type.');
   t('This is the maximum acceptable price if "Range Pricing" is specified.');
   t('This is the minimum acceptable price if "Range Pricing" is specified.');
-  t('Toll Free');
   t('Type of View');
   t('Type of construction');
   t('Type of cooling system, if any');
