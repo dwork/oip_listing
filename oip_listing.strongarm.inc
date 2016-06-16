@@ -13,6 +13,27 @@ function oip_listing_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_printable_flyer';
+  $strongarm->value = 'edit-auto-nodetitle';
+  $export['additional_settings__active_tab_printable_flyer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ant_pattern_printable_flyer';
+  $strongarm->value = '';
+  $export['ant_pattern_printable_flyer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ant_php_printable_flyer';
+  $strongarm->value = 0;
+  $export['ant_php_printable_flyer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_company';
   $strongarm->value = 0;
   $export['comment_anonymous_company'] = $strongarm;
@@ -48,6 +69,13 @@ function oip_listing_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_printable_flyer';
+  $strongarm->value = 1;
+  $export['comment_default_mode_printable_flyer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_company';
   $strongarm->value = '50';
   $export['comment_default_per_page_company'] = $strongarm;
@@ -62,6 +90,13 @@ function oip_listing_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_per_page_printable_flyer';
+  $strongarm->value = '50';
+  $export['comment_default_per_page_printable_flyer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_company';
   $strongarm->value = 1;
   $export['comment_form_location_company'] = $strongarm;
@@ -72,6 +107,13 @@ function oip_listing_strongarm() {
   $strongarm->name = 'comment_form_location_listing_statistics';
   $strongarm->value = 1;
   $export['comment_form_location_listing_statistics'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_printable_flyer';
+  $strongarm->value = 1;
+  $export['comment_form_location_printable_flyer'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -93,6 +135,20 @@ function oip_listing_strongarm() {
   $strongarm->name = 'comment_preview_listing_statistics';
   $strongarm->value = '1';
   $export['comment_preview_listing_statistics'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_preview_printable_flyer';
+  $strongarm->value = '1';
+  $export['comment_preview_printable_flyer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_printable_flyer';
+  $strongarm->value = '0';
+  $export['comment_printable_flyer'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -340,6 +396,13 @@ flyer_region_border';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'forward_display_printable_flyer';
+  $strongarm->value = 1;
+  $export['forward_display_printable_flyer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_company';
   $strongarm->value = array(
     0 => 'main-menu',
@@ -385,6 +448,15 @@ flyer_region_border';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_printable_flyer';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_printable_flyer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_company';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_company'] = $strongarm;
@@ -416,6 +488,13 @@ flyer_region_border';
   $strongarm->name = 'menu_parent_listing_statistics';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_listing_statistics'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_printable_flyer';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_printable_flyer'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -461,6 +540,15 @@ flyer_region_border';
     0 => 'status',
   );
   $export['node_options_listing_statistics'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_printable_flyer';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_printable_flyer'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -594,6 +682,63 @@ flyer_region_border';
   $strongarm->name = 'pathauto_taxonomy_term_property_type_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_property_type_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'readmorecontrol_behaviour__node__listing__classic_flyer';
+  $strongarm->value = 'default';
+  $export['readmorecontrol_behaviour__node__listing__classic_flyer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'readmorecontrol_behaviour__node__printable_flyer';
+  $strongarm->value = 'default';
+  $export['readmorecontrol_behaviour__node__printable_flyer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'readmorecontrol_format__node__listing__classic_flyer';
+  $strongarm->value = array(
+    'enabled' => 'global',
+    'text' => '',
+    'href' => '',
+    'query' => '',
+    'fragment' => '',
+    'title' => '',
+    'class' => '',
+    'rel' => '',
+    'target' => '',
+    'placement' => 'none',
+  );
+  $export['readmorecontrol_format__node__listing__classic_flyer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'readmorecontrol_format__node__printable_flyer';
+  $strongarm->value = array(
+    'enabled' => 'global',
+    'text' => '',
+    'href' => '',
+    'query' => '',
+    'fragment' => '',
+    'title' => '',
+    'class' => '',
+    'rel' => '',
+    'target' => '',
+    'placement' => 'none',
+  );
+  $export['readmorecontrol_format__node__printable_flyer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'save_continue_printable_flyer';
+  $strongarm->value = 'Save and add fields';
+  $export['save_continue_printable_flyer'] = $strongarm;
 
   return $export;
 }

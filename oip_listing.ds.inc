@@ -1981,39 +1981,51 @@ function oip_listing_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'listing';
   $ds_layout->view_mode = 'classic_flyer';
-  $ds_layout->layout = 'classic_flyer';
+  $ds_layout->layout = 'ds_2col_stacked_fluid';
   $ds_layout->settings = array(
+    'classes' => array(),
+    'wrappers' => array(
+      'header' => 'div',
+      'left' => 'div',
+      'right' => 'div',
+      'footer' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
     'regions' => array(
       'header' => array(
         0 => 'flyer_heading_classic_',
         1 => 'flyer_title_address_classic_',
       ),
       'left' => array(
-        2 => 'flyer_picture_440px_w_o_gallery',
+        0 => 'flyer_picture_440px_w_o_gallery',
       ),
       'right' => array(
-        3 => 'bedrooms_classic_res_multi_',
-        4 => 'bathrooms_classic_res_multi_',
-        5 => 'sqft_classic_res_multi_',
-        6 => 'yr_build_classic_res_multi_',
-        7 => 'lot_size_classic',
-        8 => 'acres_classic',
-        9 => 'zone_classic',
-        10 => 'contour_classic',
-        11 => 'taxes',
-        12 => 'listing_id_classic',
-        13 => 'terms_classic',
-        14 => 'classic_multiple_pics_exist',
+        0 => 'bedrooms_classic_res_multi_',
+        1 => 'bathrooms_classic_res_multi_',
+        2 => 'sqft_classic_res_multi_',
+        3 => 'yr_build_classic_res_multi_',
+        4 => 'lot_size_classic',
+        5 => 'acres_classic',
+        6 => 'zone_classic',
+        7 => 'contour_classic',
+        8 => 'taxes',
+        9 => 'listing_id_classic',
+        10 => 'terms_classic',
+        11 => 'classic_multiple_pics_exist',
       ),
       'footer' => array(
-        15 => 'row1_classic_res_multi_',
-        16 => 'row2_classic_res_mul_com_',
-        17 => 'row2_classic_com_',
-        18 => 'row3_classic_res_mul_',
-        19 => 'utilities_classic',
-        20 => 'classic_listing_description',
-        21 => 'agents_classic',
-        22 => 'rmls_disclaimer',
+        0 => 'row1_classic_res_multi_',
+        1 => 'row2_classic_res_mul_com_',
+        2 => 'row2_classic_com_',
+        3 => 'row3_classic_res_mul_',
+        4 => 'utilities_classic',
+        5 => 'classic_listing_description',
+        6 => 'agents_classic',
+        7 => 'rmls_disclaimer',
       ),
     ),
     'fields' => array(
@@ -2041,18 +2053,6 @@ function oip_listing_ds_layout_settings_info() {
       'agents_classic' => 'footer',
       'rmls_disclaimer' => 'footer',
     ),
-    'classes' => array(),
-    'wrappers' => array(
-      'header' => 'div',
-      'left' => 'div',
-      'right' => 'div',
-      'footer' => 'div',
-    ),
-    'layout_wrapper' => 'div',
-    'layout_attributes' => '',
-    'layout_attributes_merge' => 1,
-    'layout_link_attribute' => '',
-    'layout_link_custom' => '',
   );
   $export['node|listing|classic_flyer'] = $ds_layout;
 

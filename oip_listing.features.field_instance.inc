@@ -1548,8 +1548,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 103,
       ),
       'default' => array(
@@ -1611,8 +1617,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 72,
       ),
       'default' => array(
@@ -1669,8 +1681,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 107,
       ),
       'default' => array(
@@ -1733,8 +1751,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 52,
       ),
       'default' => array(
@@ -1791,8 +1815,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 126,
       ),
       'default' => array(
@@ -1849,8 +1879,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 86,
       ),
       'default' => array(
@@ -1907,8 +1943,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 88,
       ),
       'default' => array(
@@ -1965,8 +2007,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 73,
       ),
       'default' => array(
@@ -2023,8 +2071,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 105,
       ),
       'default' => array(
@@ -2087,8 +2141,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 104,
       ),
       'default' => array(
@@ -2151,8 +2211,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 51,
       ),
       'default' => array(
@@ -2210,8 +2276,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 63,
       ),
       'default' => array(
@@ -2268,8 +2340,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 74,
       ),
       'default' => array(
@@ -2326,8 +2404,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 49,
       ),
       'default' => array(
@@ -2377,8 +2461,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 75,
       ),
       'default' => array(
@@ -2435,8 +2525,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 129,
       ),
       'default' => array(
@@ -2493,8 +2589,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 77,
       ),
       'default' => array(
@@ -2551,8 +2653,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 57,
       ),
       'default' => array(
@@ -2608,8 +2716,15 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
         'weight' => 132,
       ),
       'default' => array(
@@ -2673,8 +2788,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 78,
       ),
       'default' => array(
@@ -2731,8 +2852,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 79,
       ),
       'default' => array(
@@ -2789,8 +2916,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 80,
       ),
       'default' => array(
@@ -2847,8 +2980,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 81,
       ),
       'default' => array(
@@ -2905,8 +3044,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 67,
       ),
       'default' => array(
@@ -2973,8 +3118,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 48,
       ),
       'default' => array(
@@ -3023,8 +3174,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 82,
       ),
       'default' => array(
@@ -3081,8 +3238,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 117,
       ),
       'default' => array(
@@ -3145,8 +3308,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 116,
       ),
       'default' => array(
@@ -3203,8 +3372,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 96,
       ),
       'default' => array(
@@ -3264,8 +3439,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 83,
       ),
       'default' => array(
@@ -3322,8 +3503,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 84,
       ),
       'default' => array(
@@ -3380,8 +3567,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 85,
       ),
       'default' => array(
@@ -3442,8 +3635,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 89,
       ),
       'default' => array(
@@ -3496,8 +3695,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 68,
       ),
       'default' => array(
@@ -3559,8 +3764,15 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
         'weight' => 133,
       ),
       'default' => array(
@@ -3624,8 +3836,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 125,
       ),
       'default' => array(
@@ -3682,8 +3900,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 131,
       ),
       'default' => array(
@@ -3746,8 +3970,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 87,
       ),
       'default' => array(
@@ -3804,8 +4034,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 109,
       ),
       'default' => array(
@@ -3862,8 +4098,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 60,
       ),
       'default' => array(
@@ -3926,8 +4168,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 59,
       ),
       'default' => array(
@@ -3990,8 +4238,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 111,
       ),
       'default' => array(
@@ -4048,8 +4302,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 119,
       ),
       'default' => array(
@@ -4106,8 +4366,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 70,
       ),
       'default' => array(
@@ -4170,8 +4436,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 71,
       ),
       'default' => array(
@@ -4234,8 +4506,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 123,
       ),
       'default' => array(
@@ -4291,8 +4569,15 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
         'weight' => 47,
       ),
       'default' => array(
@@ -4358,8 +4643,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 54,
       ),
       'default' => array(
@@ -4416,8 +4707,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 128,
       ),
       'default' => array(
@@ -4474,8 +4771,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 53,
       ),
       'default' => array(
@@ -4526,8 +4829,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 101,
       ),
       'default' => array(
@@ -4587,8 +4896,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 58,
       ),
       'default' => array(
@@ -4642,8 +4957,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 130,
       ),
       'default' => array(
@@ -4699,8 +5020,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 98,
       ),
       'default' => array(
@@ -4752,8 +5079,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 91,
       ),
       'default' => array(
@@ -4814,8 +5147,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 46,
       ),
       'default' => array(
@@ -4862,8 +5201,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 124,
       ),
       'default' => array(
@@ -4920,8 +5265,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 118,
       ),
       'default' => array(
@@ -4978,8 +5329,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 121,
       ),
       'default' => array(
@@ -5036,8 +5393,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 120,
       ),
       'default' => array(
@@ -5094,8 +5457,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 102,
       ),
       'default' => array(
@@ -5155,8 +5524,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 93,
       ),
       'default' => array(
@@ -5210,8 +5585,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 64,
       ),
       'default' => array(
@@ -5283,8 +5664,15 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
         'weight' => 113,
       ),
       'default' => array(
@@ -5358,8 +5746,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 114,
       ),
       'default' => array(
@@ -5422,8 +5816,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 115,
       ),
       'default' => array(
@@ -5484,8 +5884,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 55,
       ),
       'default' => array(
@@ -5539,8 +5945,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 106,
       ),
       'default' => array(
@@ -5603,8 +6015,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 56,
       ),
       'default' => array(
@@ -5665,8 +6083,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 108,
       ),
       'default' => array(
@@ -5721,8 +6145,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 76,
       ),
       'default' => array(
@@ -5779,8 +6209,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 127,
       ),
       'default' => array(
@@ -5837,8 +6273,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 69,
       ),
       'default' => array(
@@ -5895,8 +6337,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 95,
       ),
       'default' => array(
@@ -5959,8 +6407,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 94,
       ),
       'default' => array(
@@ -6017,8 +6471,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 61,
       ),
       'default' => array(
@@ -6075,8 +6535,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 99,
       ),
       'default' => array(
@@ -6132,8 +6598,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 65,
       ),
       'default' => array(
@@ -6205,8 +6677,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 122,
       ),
       'default' => array(
@@ -6263,8 +6741,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 66,
       ),
       'default' => array(
@@ -6336,8 +6820,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 92,
       ),
       'default' => array(
@@ -6394,8 +6884,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 97,
       ),
       'default' => array(
@@ -6451,8 +6947,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 90,
       ),
       'default' => array(
@@ -6509,8 +7011,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 62,
       ),
       'default' => array(
@@ -6582,8 +7090,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 110,
       ),
       'default' => array(
@@ -6646,8 +7160,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 112,
       ),
       'default' => array(
@@ -6705,8 +7225,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 50,
       ),
       'default' => array(
@@ -6764,8 +7290,14 @@ function oip_listing_field_default_field_instances() {
     'display' => array(
       'classic_flyer' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'editablefields',
+        'settings' => array(
+          'click_to_edit' => FALSE,
+          'empty_text' => '',
+          'fallback_format' => NULL,
+          'fallback_settings' => array(),
+        ),
+        'type' => 'editable',
         'weight' => 100,
       ),
       'default' => array(
