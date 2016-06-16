@@ -628,6 +628,63 @@ function formatPhone($num)  {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
+  $ds_field->field = 'classic_listing_description';
+  $ds_field->label = 'Classic - listing description';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<?php
+   $wrapper = entity_metadata_wrapper(\'node\',$entity);
+   $ary = field_fetch_field_values(\'node\',$entity,\'body\'); 
+   if (isset($ary[0])) {
+      $ad = $ary[0];
+   } else {
+      $ad = \'\';
+   }
+    // For some reason, safe_value marksup the paragraph with <p> ... </p>, so we want to strip that off
+    if (substr($ad,0,3) == \'<p>\') {
+      $ad = substr($ad,3,strlen($ad)-8);
+    }
+    print "<div class=classic_row_full>$ad</div>";
+    print "<HR>";
+?>',
+      'format' => 'ds_code',
+    ),
+    'use_token' => 0,
+  );
+  $export['classic_listing_description'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'classic_multiple_pics_exist';
+  $ds_field->label = 'Classic - multiple pics exist';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<?php
+   $wrapper = entity_metadata_wrapper(\'node\',$entity);
+   $listingid = $wrapper->field_mlsno->value();
+   $pic_count = $wrapper->field_photos->value();
+   if ($pic_count>1) {
+      echo "<BR><a href=/listingid>See Listing for Multiple Pictures</a>";
+   }
+?>',
+      'format' => 'ds_code',
+    ),
+    'use_token' => 0,
+  );
+  $export['classic_multiple_pics_exist'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
   $ds_field->field = 'contour_classic';
   $ds_field->label = 'Classic - Contour (land)';
   $ds_field->field_type = 5;
