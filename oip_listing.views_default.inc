@@ -900,16 +900,6 @@ if ($row->uid == 1) {
    RETURN TRUE;
 }
 RETURN FALSE;';
-  /* Filter criterion: User: User Type (field_usertype) */
-  $handler->display->display_options['filters']['field_usertype_tid']['id'] = 'field_usertype_tid';
-  $handler->display->display_options['filters']['field_usertype_tid']['table'] = 'field_data_field_usertype';
-  $handler->display->display_options['filters']['field_usertype_tid']['field'] = 'field_usertype_tid';
-  $handler->display->display_options['filters']['field_usertype_tid']['value'] = array(
-    16 => '16',
-  );
-  $handler->display->display_options['filters']['field_usertype_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_usertype_tid']['vocabulary'] = 'company_type';
-  $handler->display->display_options['filters']['field_usertype_tid']['hierarchy'] = 1;
   /* Filter criterion: User: Roles */
   $handler->display->display_options['filters']['rid']['id'] = 'rid';
   $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
