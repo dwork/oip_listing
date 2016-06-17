@@ -1348,7 +1348,7 @@ print "<a href=/$entity->title border=0 align=left>$file_contents</a>";
   }
   
   // Save listing 
-  print  flag_create_link(\'listings\', $entity->did);
+  print  flag_create_link(\'listings\', $entity->uid);
 ?>',
       'format' => 'ds_code',
     ),
