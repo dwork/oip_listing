@@ -125,6 +125,90 @@ function oip_listing_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'delta_blocks_branding_logo_linked';
+  $strongarm->value = TRUE;
+  $export['delta_blocks_branding_logo_linked'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'delta_blocks_branding_logo_render';
+  $strongarm->value = TRUE;
+  $export['delta_blocks_branding_logo_render'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'delta_blocks_branding_site_name_hidden';
+  $strongarm->value = FALSE;
+  $export['delta_blocks_branding_site_name_hidden'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'delta_blocks_branding_site_name_linked';
+  $strongarm->value = TRUE;
+  $export['delta_blocks_branding_site_name_linked'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'delta_blocks_branding_site_slogan_hidden';
+  $strongarm->value = FALSE;
+  $export['delta_blocks_branding_site_slogan_hidden'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'delta_blocks_breadcrumb_current';
+  $strongarm->value = TRUE;
+  $export['delta_blocks_breadcrumb_current'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'delta_blocks_breadcrumb_title_hidden';
+  $strongarm->value = TRUE;
+  $export['delta_blocks_breadcrumb_title_hidden'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'delta_blocks_logo_linked';
+  $strongarm->value = TRUE;
+  $export['delta_blocks_logo_linked'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'delta_blocks_page_title_hidden';
+  $strongarm->value = FALSE;
+  $export['delta_blocks_page_title_hidden'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'delta_blocks_site_name_hidden';
+  $strongarm->value = FALSE;
+  $export['delta_blocks_site_name_hidden'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'delta_blocks_site_name_linked';
+  $strongarm->value = TRUE;
+  $export['delta_blocks_site_name_linked'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'delta_blocks_site_slogan_hidden';
+  $strongarm->value = FALSE;
+  $export['delta_blocks_site_slogan_hidden'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'ds_extras_fields_extra';
   $strongarm->value = 0;
   $export['ds_extras_fields_extra'] = $strongarm;
