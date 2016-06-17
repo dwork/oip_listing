@@ -390,16 +390,19 @@ function oip_listing_ds_custom_fields_info() {
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php
+if ($pathwrapper = file_stream_wrapper_get_instance_by_uri(\'public://\')) {
+  $publicpath = $pathwrapper->getExternalUrl();
+}
+
 // Get the primary agent entity
 $wrapper = entity_metadata_wrapper(\'node\',$entity);
 $agentid =$wrapper->field_listingagentid->value(); 
-$agent1 = get_agent($agentid);
-
+$agent1 = get_agent($publicpath, $agentid);
 // Which format? Team or individual
 $coagent = $wrapper->field_colistingagentid->value(); 
 $bothagents = (!empty($coagent[0]) ? 1 : 0);
 if ($bothagents) {
-  $agent2 = get_agent($coagent);
+  $agent2 = get_agent($publicpath,$coagent);
   show_both ($agent1, $agent2); 
 } else {
   show_one($agent1);
@@ -437,8 +440,7 @@ function show_both ($agent1, $agent2) {
   } else {
   	 $url1 = \'\';
   }
-  $pic1 = \'/sites/default/files/pictures/\' . $agent1->picture->filename;
-  $uwrapper2 = entity_metadata_wrapper(\'user\',$agent2);
+   $uwrapper2 = entity_metadata_wrapper(\'user\',$agent2);
   $first2 = $agent2->first;
   $email2 = "<a href=mailto:$agent2->myemail>$agent2->myemail</a>";
   if (!empty($agent2->weburl)) {
@@ -446,8 +448,7 @@ function show_both ($agent1, $agent2) {
   } else {
   	 $url2 = \'\';
   }
-  $pic2 = \'/sites/default/files/pictures/\' . $agent2->picture->filename;
-  print "<div class=classic-agents-left><img src=\'$pic1\'></div>";
+  print "<div class=classic-agents-left><img src=\'$agent1->pic\'></div>";
   print "<div class=classic-agents-middle><center>";
   
   print "Reach $first1 by email $email1 $url1<BR>Reach $first2 by email $email2 $url2";
@@ -464,11 +465,11 @@ function show_both ($agent1, $agent2) {
   	print "$agent2->companyname<BR>";
   }
   print "</center></div>";
-  print "<div class=classic-agents-right><img src=\'$pic2\'></div>";
+  print "<div class=classic-agents-right><img src=\'$agent2->pic\'></div>";
 }
 
 
-function get_agent($agentid) {
+function get_agent($path,$agentid) {
   $query = new EntityFieldQuery();
   $query->entityCondition(\'entity_type\', \'user\')
     ->fieldCondition(\'field_agentid\', \'value\', $agentid, \'=\');
@@ -517,7 +518,7 @@ function get_agent($agentid) {
      $agent1->weburl = \'\';
   }
   if (isset($agent1->picture->filename)) {
-    $agent1->pic = \'/sites/default/files/pictures/\' . $agent1->picture->filename;
+    $agent1->pic = $path.\'pictures/\'.$agent1->picture->filename;
   } else {
      $agent1->pic = \'\';
   }
@@ -526,7 +527,7 @@ function get_agent($agentid) {
     $company = node_load($agent1->field_agency[\'und\'][0][\'target_id\']);
     $agent1->companyname = $company->title;
     if (isset($company->field_company_logo[\'und\'][0][\'filename\'])) {
-      $agent1->companylogo = \'/sites/default/files/\'.$company->field_company_logo[\'und\'][0][\'filename\'];
+      $agent1->companylogo = $path.$company->field_company_logo[\'und\'][0][\'filename\'];
     } else {
       $agent1->companylogo =\'\';
     }

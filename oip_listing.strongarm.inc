@@ -334,6 +334,15 @@ flyer_region_border';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'flag_default_flag_status';
+  $strongarm->value = array(
+    'listings' => TRUE,
+  );
+  $export['flag_default_flag_status'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'forward_display_printable_flyer';
   $strongarm->value = 1;
   $export['forward_display_printable_flyer'] = $strongarm;
