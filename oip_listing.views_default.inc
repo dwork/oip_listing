@@ -1177,11 +1177,10 @@ echo $result->rowCount();
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Field: Content: Address 1 */
+  /* Field: Content: Street Address */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
-  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   /* Field: Content: List Price */
   $handler->display->display_options['fields']['field_listprice']['id'] = 'field_listprice';
   $handler->display->display_options['fields']['field_listprice']['table'] = 'field_data_field_listprice';
@@ -1564,11 +1563,10 @@ print "<a href=/$row->title border=0>$file_contents</a>";
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'MLS#';
-  /* Field: Content: Address 1 */
+  /* Field: Content: Street Address */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
-  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   $handler->display->display_options['fields']['field_address']['exclude'] = TRUE;
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
@@ -3825,11 +3823,10 @@ print "<a href=/$row->title border=0>$file_contents</a>";
   $handler->display->display_options['fields']['field_mlsno']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_mlsno']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_mlsno']['alter']['path'] = '[field_mlsno]';
-  /* Field: Content: Address 1 */
+  /* Field: Content: Street Address */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
-  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   $handler->display->display_options['fields']['field_address']['exclude'] = TRUE;
   /* Field: Content: City */
   $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
@@ -4032,7 +4029,7 @@ print "<a href=/$row->title border=0>$file_contents</a>";
     7 => 0,
     8 => 0,
   );
-  /* Filter criterion: Content: Address 1 (field_address) */
+  /* Filter criterion: Content: Street Address (field_address) */
   $handler->display->display_options['filters']['field_address_value']['id'] = 'field_address_value';
   $handler->display->display_options['filters']['field_address_value']['table'] = 'field_data_field_address';
   $handler->display->display_options['filters']['field_address_value']['field'] = 'field_address_value';
@@ -4143,11 +4140,10 @@ print "<a href=/$row->title border=0>$file_contents</a>";
   $handler->display->display_options['fields']['field_mlsno']['field'] = 'field_mlsno';
   $handler->display->display_options['fields']['field_mlsno']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_mlsno']['alter']['path'] = '[field_mlsno]';
-  /* Field: Content: Address 1 */
+  /* Field: Content: Street Address */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
-  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   /* Field: Content: City */
   $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
   $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';
@@ -4294,7 +4290,7 @@ print "<a href=/$row->title border=0>$file_contents</a>";
     7 => 0,
     8 => 0,
   );
-  /* Filter criterion: Content: Address 1 (field_address) */
+  /* Filter criterion: Content: Street Address (field_address) */
   $handler->display->display_options['filters']['field_address_value']['id'] = 'field_address_value';
   $handler->display->display_options['filters']['field_address_value']['table'] = 'field_data_field_address';
   $handler->display->display_options['filters']['field_address_value']['field'] = 'field_address_value';
@@ -4676,11 +4672,10 @@ print "<a href=/$row->title border=0>$file_contents</a>";
   $handler->display->display_options['fields']['field_colistingagentid']['id'] = 'field_colistingagentid';
   $handler->display->display_options['fields']['field_colistingagentid']['table'] = 'field_data_field_colistingagentid';
   $handler->display->display_options['fields']['field_colistingagentid']['field'] = 'field_colistingagentid';
-  /* Field: Content: Address 1 */
+  /* Field: Content: Street Address */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
-  $handler->display->display_options['fields']['field_address']['label'] = 'Street Address';
   /* Field: Content: Ad Title Override */
   $handler->display->display_options['fields']['field_adtitle']['id'] = 'field_adtitle';
   $handler->display->display_options['fields']['field_adtitle']['table'] = 'field_data_field_adtitle';
