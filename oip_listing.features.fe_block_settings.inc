@@ -427,5 +427,73 @@ function oip_listing_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['views-featured_listing-block'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'featured_listing-block',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '<front>
+listings/*
+listings',
+    'roles' => array(),
+    'themes' => array(
+      'oip' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'oip',
+        'weight' => -25,
+      ),
+      'omega' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'omega',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 1,
+  );
+
+  $export['views-featured_listing-block_1'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'featured_listing-block_1',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '<front>
+listings/*
+listings',
+    'roles' => array(),
+    'themes' => array(
+      'oip' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'oip',
+        'weight' => -26,
+      ),
+      'omega' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'omega',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 1,
+  );
+
   return $export;
 }

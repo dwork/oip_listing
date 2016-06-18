@@ -39,54 +39,6 @@ function oip_listing_views_api($module = NULL, $api = NULL) {
 }
 
 /**
- * Implements hook_flag_default_flags().
- */
-function oip_listing_flag_default_flags() {
-  $flags = array();
-  // Exported flag: "Listing Flag".
-  $flags['listings'] = array(
-    'entity_type' => 'node',
-    'title' => 'Listing Flag',
-    'global' => 0,
-    'types' => array(
-      0 => 'listing',
-    ),
-    'flag_short' => 'Save',
-    'flag_long' => 'Click to bookmark this listing',
-    'flag_message' => 'This listing has been saved',
-    'unflag_short' => 'UnSave',
-    'unflag_long' => 'Click to remove the bookmark for this listing',
-    'unflag_message' => 'This listing has been removed from your saved list',
-    'unflag_denied_text' => '',
-    'link_type' => 'toggle',
-    'weight' => 0,
-    'show_in_links' => array(
-      'full' => 0,
-      'teaser' => 0,
-      'rss' => 0,
-      'search_index' => 0,
-      'search_result' => 0,
-      'token' => 0,
-      'classic_flyer' => 0,
-      'listing_flyer1' => 0,
-      'revision' => 0,
-    ),
-    'show_as_field' => 0,
-    'show_on_form' => 0,
-    'access_author' => '',
-    'show_contextual_link' => 0,
-    'i18n' => 0,
-    'module' => 'oip_listing',
-    'locked' => array(
-      0 => 'name',
-    ),
-    'api_version' => 3,
-  );
-  return $flags;
-
-}
-
-/**
  * Implements hook_node_info().
  */
 function oip_listing_node_info() {

@@ -1347,9 +1347,13 @@ print "<a href=/$entity->title border=0 align=left>$file_contents</a>";
   if (isset($entity->field_website[\'und\'][0])) {
      print \'<a href="\'.$entity->field_website[\'und\'][0][\'url\'].\'" target="_blank">Website</a>\'." <BR><BR>";
   }
-  
-  // Save listing 
-  print  flag_create_link(\'listings\', $entity->uid);
+?>
+ 
+<?php
+   // Save/Unsave listing with flag module
+   if (module_exists(\'flag\')) {
+     print  flag_create_link(\'listings\', $entity->uid);
+   }
 ?>',
       'format' => 'ds_code',
     ),
